@@ -19,6 +19,14 @@ To pull the code, we use submodules for library dependencies. These commands sho
 git clone git@github.com:uw-mad-dash/TUNA.git
 git submodule update --init --recursive
 ```
+OR
+```sh
+git clone https://github.com/uw-mad-dash/TUNA.git
+cd TUNA
+git config submodule.src/MLOS.url https://github.com/jsfreischuetz/MLOS.git
+git submodule update --init --recursive
+cd ..
+```
 
 ### Dependencies
 This project has been tested on Ubuntu 20, however we believe that it should work on most versions of linux.
