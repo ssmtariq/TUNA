@@ -21,8 +21,9 @@ else
 fi
 
 # Set python3 alternatives (but do not change system default to 3.11)
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 || true
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2 || true
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 || true
+#sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2 || true
+#sudo update-alternatives --set python3 /usr/bin/python3.8 || true
 
 # ---- Miniconda ----
 if [ -x "$HOME/miniconda/bin/conda" ]; then
