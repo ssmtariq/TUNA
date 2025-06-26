@@ -110,19 +110,26 @@ To verify SSH-based orchestration before running deployment scripts:
    hp185.utah.cloudlab.us
    ...
    ```
-4. **Add hosts to SSH known\_hosts:**
+4. **Build the MLOS environment and activate it:**
+In the orchestrator or the 11th node (e.g. node-10), run the command to create the mlos Conda environment mentioned above.
+   ```sh
+   make -C src/MLOS          # builds the MLOS conda environment
+   conda activate mlos
+   ```
+5. **Add hosts to SSH known\_hosts:**
 
    ```sh
+   cd src/processing #consider current dir is /users/username/TUNA
    ./add_hosts.sh <hosts> 22
    ```
-5. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
+6. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
 
    ```sh
    export PSSH_USER=<your_username>
    export PSSH_OPTIONS="IdentityFile=$HOME/.ssh/id_ed25519"
    source ~/.bashrc
    ```
-6. **Verify with a test command:**
+7. **Verify with a test command:**
 
    ```sh
    parallel-ssh -i -h <hosts> hostname
