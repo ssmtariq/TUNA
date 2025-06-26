@@ -163,6 +163,8 @@ Building the orchestrator requires slightly more interaction from the user.
 
 ```sh
 bash orchestrator_deploy.sh <orchestrator_host> 22
+#example(use single hostname not a file)
+bash orchestrator_deploy.sh hp171.utah.cloudlab.us 22
 ```
 
 First, like before we will set up the environment using a deployment script. This will, again, automate the file transfer and environment setup.
