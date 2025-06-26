@@ -113,7 +113,7 @@ To verify SSH-based orchestration before running deployment scripts:
 4. **Add hosts to SSH known\_hosts:**
 
    ```sh
-   ./add_hosts.sh <hosts_clean_file> 22
+   ./add_hosts.sh <hosts> 22
    ```
 5. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
 
@@ -125,7 +125,7 @@ To verify SSH-based orchestration before running deployment scripts:
 6. **Verify with a test command:**
 
    ```sh
-   parallel-ssh -i -h <hosts_clean_file> hostname
+   parallel-ssh -i -h <hosts> hostname
    ```
 
 ### Workers
@@ -135,7 +135,7 @@ To install and copy our files, there are two commands we will need to run.
 ```sh
 ./worker_setup_remote.sh <hosts>
 #example (provide absolute path of hosts file)
-./worker_setup_remote.sh /users/ssmtariq/TUNA/src/hosts_clean
+./worker_setup_remote.sh /users/username/TUNA/src/hosts_clean
 ```
 
 The first command will install all of the dependencies, as well as set up the environment.
@@ -143,7 +143,7 @@ The first command will install all of the dependencies, as well as set up the en
 ```sh
 ./worker_deployment.sh <hosts> <node_type>
 #example (provide absolute path of hosts file)
-./worker_deployment.sh /users/ssmtariq/TUNA/src/hosts_clean c220g5
+./worker_deployment.sh /users/username/TUNA/src/hosts_clean c220g5
 ```
 
 The second command will start all of the required processes. Note that the second command will say some of the commands fail. This is expected, as they simply ensure that any previous instances of stopped and deleted before beginning the initialization process.
