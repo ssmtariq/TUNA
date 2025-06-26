@@ -88,18 +88,62 @@ These scripts should work on any platform, however, we have only tested this on 
 
 If you are trying to replicate the work found in our paper, we recommend using 10 worker nodes and 1 orchestrator node, where the 10 worker nodes are the first 10 nodes that were created. This will allow you to use our provided hosts files (`hosts.azure` or `hosts.cloudlab`). Alternatively, a custom host file can be used.
 
+### Configuring and testing parallel-ssh on CloudLab (quick start)
+
+To verify SSH-based orchestration before running deployment scripts:
+
+1. **Generate a key on one worker (e.g., node0)**:
+
+   ```sh
+   ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+   ```
+2. **Copy the public key to all nodes (including orchestrator):**
+
+   ```sh
+   ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<hostname>
+   ```
+3. **Create a clean host file (no usernames):**
+   Example:
+
+   ```
+   hp169.utah.cloudlab.us
+   hp185.utah.cloudlab.us
+   ...
+   ```
+4. **Add hosts to SSH known\_hosts:**
+
+   ```sh
+   ./add_hosts.sh <hosts_clean_file> 22
+   ```
+5. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
+
+   ```sh
+   export PSSH_USER=<your_username>
+   export PSSH_OPTIONS="IdentityFile=$HOME/.ssh/id_ed25519"
+   source ~/.bashrc
+   ```
+6. **Verify with a test command:**
+
+   ```sh
+   parallel-ssh -i -h <hosts_clean_file> hostname
+   ```
+
 ### Workers
 
 To install and copy our files, there are two commands we will need to run.
 
 ```sh
 ./worker_setup_remote.sh <hosts>
+#example (provide absolute path of hosts file)
+./worker_setup_remote.sh /users/ssmtariq/TUNA/src/hosts_clean
 ```
 
 The first command will install all of the dependencies, as well as set up the environment.
 
 ```sh
 ./worker_deployment.sh <hosts> <node_type>
+#example (provide absolute path of hosts file)
+./worker_deployment.sh /users/ssmtariq/TUNA/src/hosts_clean c220g5
 ```
 
 The second command will start all of the required processes. Note that the second command will say some of the commands fail. This is expected, as they simply ensure that any previous instances of stopped and deleted before beginning the initialization process.
