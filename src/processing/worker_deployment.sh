@@ -1,20 +1,21 @@
 #!/bin/bash
 
 # move the requiremenst over
-parallel-scp -h $1 requirements.txt .
+parallel-scp -h $1 requirements.txt ~/requirements.txt
 
 pushd ..
 
 cat $1
 
-# stop and remove the previous containers
-parallel-ssh -h $1 "sudo docker kill dbms"
-parallel-ssh -h $1 "sudo docker rm dbms"
-parallel-ssh -h $1 "sudo pkill python3"
+
+# stop and remove the previous containers (fault-tolerant)
+parallel-ssh -h $1 "sudo docker ps -q -f name=dbms | grep -q . && sudo docker kill dbms || echo 'No dbms container running'"
+parallel-ssh -h $1 "sudo docker ps -a -q -f name=dbms | grep -q . && sudo docker rm dbms || echo 'No dbms container to remove'"
+parallel-ssh -h $1 "pgrep python3 >/dev/null && sudo pkill python3 || echo 'No python3 process to kill'"
 
 # remove old files
 parallel-ssh -h $1 "sudo rm -rf ./nautilus"
-parallel-scp -r -h $1 nautilus .
+parallel-scp -r -h $1 nautilus ~/nautilus
 parallel-ssh -h $1 "sudo rm -rf /opt/nautilus"
 parallel-ssh -h $1 "sudo cp -r nautilus /opt/nautilus"
 
