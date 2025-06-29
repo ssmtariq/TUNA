@@ -1,0 +1,18 @@
+# @package deploy.instance_type
+
+name: xl170
+
+# Storage-related vars
+disk_device: /dev/sda
+disk_partition: /dev/sda4
+disk_mount_point: /mydata          # NOT /mnt/ssd
+disk_backup_mount_point: /mydata/backup
+mem_backup_mount_point: /dev/shm/backup
+
+# Container isolation / restriction vars
+# xl170 nodes expose 20 logical CPUs (0-19).  Split them evenly:
+cpuset_cpus_driver: 0-4,10-14        # 10 CPUs for driver / DBMS
+cpuset_cpus_workload: 5-9,15-19      # 10 CPUs for benchmark workload
+mem_limit_driver: 32G                # Memory limits – xl170s usually ship with 64 GiB RAM.
+mem_limit_workload: 32G
+shm_size_driver: 8G                  # Shared-memory size for the driver container (≈25 % of driver memory)
