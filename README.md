@@ -110,26 +110,20 @@ To verify SSH-based orchestration before running deployment scripts:
    hp185.utah.cloudlab.us
    ...
    ```
-4. **Build the MLOS environment and activate it:**
-In the orchestrator or the 11th node (e.g. node-10), run the command to create the mlos Conda environment mentioned above.
-   ```sh
-   make -C src/MLOS          # builds the MLOS conda environment
-   conda activate mlos
-   ```
-5. **Add hosts to SSH known\_hosts:**
+4. **Add hosts to SSH known\_hosts:**
 
    ```sh
    cd src/processing #consider current dir is /users/username/TUNA
    ./add_hosts.sh <hosts> 22
    ```
-6. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
+5. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
 
    ```sh
    export PSSH_USER=<your_username>
    export PSSH_OPTIONS="IdentityFile=$HOME/.ssh/id_ed25519"
    source ~/.bashrc
    ```
-7. **Verify with a test command:**
+6. **Verify with a test command:**
 
    ```sh
    parallel-ssh -i -h <hosts> hostname
@@ -151,11 +145,16 @@ The first command will install all of the dependencies, as well as set up the en
 ./worker_deployment.sh <hosts> <node_type>
 #example (provide absolute path of hosts file)
 ./worker_deployment.sh /users/username/TUNA/src/hosts_clean c220g5
+#For cloud lab cluster (use appropriate machine or node types. available instance types are c220g1, c220g2, c220g5, and xl170)
+./worker_deployment_cloudlab.sh /users/username/TUNA/src/hosts_clean xl170
 ```
+Once the `worker_deployment.sh` or `worker_deployment_cloudlab.sh` execution is finished, check the logs `/tmp/install_session.log`, `/tmp/proxy_session.log` and the tmux `proxy` terminal session to confirm if the deployment was successful and workers are running evaluation server listening to port `50051`.
 
 The second command will start all of the required processes. Note that the second command will say some of the commands fail. This is expected, as they simply ensure that any previous instances of stopped and deleted before beginning the initialization process.
 
-At some point during running this command, there will be a required interaction to specify that the docker image that is building in the background has completed. There are two options here. First, you can connect to one of the workers and run `sudo tmux a -t install`, and sure that the pane has completed all of its commands. Alternatively, you can wait around 20 minutes, and this will most likely be long enough for the image to complete building.
+At some point during running this command, there will be a required interaction to specify that the docker image that is building in the background has completed. There are two options here. 
+First, you can connect to one of the workers and run `sudo tmux a -t install`, and sure that the pane has completed all of its commands. 
+Alternatively, you can wait around 20 minutes, and this will most likely be long enough for the image to complete building.
 
 ### Orchestrator
 
@@ -165,6 +164,8 @@ Building the orchestrator requires slightly more interaction from the user.
 bash orchestrator_deploy.sh <orchestrator_host> 22
 #example(use single hostname not a file)
 bash orchestrator_deploy.sh hp171.utah.cloudlab.us 22
+#For cloudlab use
+bash orchestrator_deploy_cloudlab.sh hp171.utah.cloudlab.us 22
 ```
 
 First, like before we will set up the environment using a deployment script. This will, again, automate the file transfer and environment setup.
@@ -173,8 +174,12 @@ Next, connect to your orchestrator node and run the following commands. Note, th
 
 ```sh
 tmux
+tmux a -t proxy #open the tmux terminal "proxy" running in each worker nodes
+tmux ls #list tmux terminal sessions
+tmux set -g mouse on #enable mouse scrolling in tmux session
+tmux kill-session -t <session_name> #terminate a specific session
 ```
-
+In the orchestrator or the 11th node (e.g. node-10), run the command to create the mlos Conda environment mentioned earlier.
 ```sh
 make -C src/MLOS # (only the conda-env target is required)
 conda activate mlos
@@ -208,7 +213,7 @@ Here we provide a brief description of each tuning script. All of the following 
 - `TUNA_gp.py`: A script to run TUNA with the optimizer switched out for a gaussian process model
 - `TUNA_no_model.py`:The full TUNA sampling methodology without the noise adjustor model.
 - `TUNA_no_outlier.py`: The full TUNA sampling methodology without the outlier detection.
-- `TUNA.py`: The normal TUNA sampling script that is used tbroughout the paper.
+- `TUNA.py`: The normal TUNA sampling script that is used throughout the paper.
 
 ### Scripts used for Reproducing Selected Experiments
 
