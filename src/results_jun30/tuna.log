@@ -1,0 +1,3253 @@
+{'id': 12, 'name': 'autovacuum_analyze_scale_factor', 'type': 'real', 'default': 0.1, 'description': 'Number of tuple inserts, updates, or deletes prior to analyze as a fraction of reltuples', 'min': 0.0, 'max': 100.0} 0.0 100.0
+{'id': 13, 'name': 'autovacuum_analyze_threshold', 'type': 'integer', 'default': 50, 'description': 'Minimum number of tuple inserts, updates, or deletes prior to analyze', 'min': 0, 'max': 1000} 0.0 1000.0
+{'id': 14, 'name': 'autovacuum_freeze_max_age', 'type': 'integer', 'default': 200000000, 'description': 'Age at which to autovacuum a table to prevent transaction ID wraparound', 'min': 100000, 'max': 2000000000} 100000.0 2000000000.0
+{'id': 15, 'name': 'autovacuum_max_workers', 'type': 'integer', 'default': 3, 'description': 'Sets the maximum number of simultaneously running autovacuum worker processes', 'min': 1, 'max': 10000} 1.0 10000.0
+{'id': 16, 'name': 'autovacuum_multixact_freeze_max_age', 'type': 'integer', 'default': 400000000, 'description': 'Multixact age at which to autovacuum a table to prevent multixact wraparound', 'min': 10000, 'max': 2000000000} 10000.0 2000000000.0
+{'id': 17, 'name': 'autovacuum_naptime', 'type': 'integer', 'default': 60, 'description': 'Time to sleep between autovacuum runs', 'min': 1, 'max': 2147483} 1.0 2147483.0
+{'id': 18, 'name': 'autovacuum_vacuum_cost_delay', 'type': 'integer', 'default': 2, 'description': 'Vacuum cost delay in milliseconds, for autovacuum', 'min': -1, 'max': 100} -1.0 100.0
+{'id': 19, 'name': 'autovacuum_vacuum_cost_limit', 'type': 'integer', 'default': -1, 'description': 'Vacuum cost amount available before napping, for autovacuum', 'min': -1, 'max': 10000} -1.0 10000.0
+{'id': 20, 'name': 'autovacuum_vacuum_insert_scale_factor', 'type': 'real', 'default': 0.2, 'description': 'Number of tuple inserts prior to vacuum as a fraction of reltuples', 'min': 0.0, 'max': 100.0} 0.0 100.0
+{'id': 21, 'name': 'autovacuum_vacuum_insert_threshold', 'type': 'integer', 'default': 1000, 'description': 'Minimum number of tuple inserts prior to vacuum, or -1 to disable insert vacuums', 'min': -1, 'max': 100000} -1.0 100000.0
+{'id': 22, 'name': 'autovacuum_vacuum_scale_factor', 'type': 'real', 'default': 0.2, 'description': 'Number of tuple updates or deletes prior to vacuum as a fraction of reltuples', 'min': 0.0, 'max': 100.0} 0.0 100.0
+{'id': 23, 'name': 'autovacuum_vacuum_threshold', 'type': 'integer', 'default': 50, 'description': 'Minimum number of tuple updates or deletes prior to vacuum', 'min': 0, 'max': 2147483647} 0.0 2147483647.0
+{'id': 24, 'name': 'autovacuum_work_mem', 'type': 'integer', 'default': -1, 'description': 'Sets the maximum memory to be used by each autovacuum worker process', 'min': -1, 'max': 1048576} -1.0 1048576.0
+{'id': 25, 'name': 'backend_flush_after', 'type': 'integer', 'default': 0, 'description': 'Number of pages after which previously performed writes are flushed to disk', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 28, 'name': 'bgwriter_delay', 'type': 'integer', 'default': 200, 'description': 'Background writer sleep time between rounds', 'min': 10, 'max': 4000} 10.0 4000.0
+{'id': 29, 'name': 'bgwriter_flush_after', 'type': 'integer', 'default': 64, 'description': 'Number of pages after which previously performed writes are flushed to disk', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 30, 'name': 'bgwriter_lru_maxpages', 'type': 'integer', 'default': 100, 'description': 'Background writer maximum number of LRU pages to flush per round', 'min': 0, 'max': 1000} 0.0 1000.0
+{'id': 31, 'name': 'bgwriter_lru_multiplier', 'type': 'real', 'default': 2.0, 'description': 'Multiple of the average buffer usage to free per round', 'min': 0.0, 'max': 8.0} 0.0 8.0
+{'id': 36, 'name': 'checkpoint_completion_target', 'type': 'real', 'default': 0.5, 'description': 'Time spent flushing dirty buffers during checkpoint, as fraction of checkpoint interval', 'min': 0.0, 'max': 1.0} 0.0 1.0
+{'id': 37, 'name': 'checkpoint_flush_after', 'type': 'integer', 'default': 32, 'description': 'Number of pages after which previously performed writes are flushed to disk', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 39, 'name': 'checkpoint_timeout', 'type': 'integer', 'default': 300, 'description': 'Sets the maximum time between automatic WAL checkpoints', 'min': 30, 'max': 86400} 30.0 86400.0
+{'id': 45, 'name': 'commit_delay', 'type': 'integer', 'default': 0, 'description': 'Sets the delay in microseconds between transaction commit and flushing WAL to disk', 'min': 0, 'max': 4096} 0.0 4096.0
+{'id': 46, 'name': 'commit_siblings', 'type': 'integer', 'default': 5, 'description': 'Sets the minimum concurrent open transactions before performing commit_delay', 'min': 0, 'max': 16} 0.0 16.0
+{'id': 50, 'name': 'cpu_index_tuple_cost', 'type': 'real', 'default': 0.005, 'description': "Sets the planner's estimate of the cost of processing each index entry during an index scan", 'min': 0.0, 'max': 4.0} 0.0 4.0
+{'id': 51, 'name': 'cpu_operator_cost', 'type': 'real', 'default': 0.0025, 'description': "Sets the planner's estimate of the cost of processing each operator or function call", 'min': 0.0, 'max': 4.0} 0.0 4.0
+{'id': 52, 'name': 'cpu_tuple_cost', 'type': 'real', 'default': 0.01, 'description': "Sets the planner's estimate of the cost of processing each tuple (row)", 'min': 0.0, 'max': 4.0} 0.0 4.0
+{'id': 54, 'name': 'cursor_tuple_fraction', 'type': 'real', 'default': 0.1, 'description': "Sets the planner's estimate of the fraction of a cursor's rows that will be retrieved", 'min': 0.0, 'max': 1.0} 0.0 1.0
+{'id': 60, 'name': 'deadlock_timeout', 'type': 'integer', 'default': 1000, 'description': 'Sets the time to wait on a lock before checking for deadlock', 'min': 1, 'max': 5000} 1.0 5000.0
+{'id': 70, 'name': 'default_statistics_target', 'type': 'integer', 'default': 100, 'description': 'Sets the default statistics target', 'min': 1, 'max': 5120} 1.0 5120.0
+{'id': 81, 'name': 'effective_cache_size', 'type': 'integer', 'default': 524288, 'description': "Sets the planner's assumption about the total size of the data caches", 'min': 1, 'max': 2097152} 1.0 2097152.0
+{'id': 82, 'name': 'effective_io_concurrency', 'type': 'integer', 'default': 1, 'description': 'Number of simultaneous requests that can be handled efficiently by the disk subsystem', 'min': 0, 'max': 512} 0.0 512.0
+{'id': 110, 'name': 'from_collapse_limit', 'type': 'integer', 'default': 8, 'description': 'Sets the FROM-list size beyond which subqueries are not collapsed', 'min': 1, 'max': 50} 1.0 50.0
+{'id': 114, 'name': 'geqo_effort', 'type': 'integer', 'default': 5, 'description': 'GEQO: effort is used to set the default for other GEQO parameters', 'min': 1, 'max': 10} 1.0 10.0
+{'id': 115, 'name': 'geqo_generations', 'type': 'integer', 'default': 0, 'description': 'GEQO: number of iterations of the algorithm', 'min': 0, 'max': 1000} 0.0 1000.0
+{'id': 116, 'name': 'geqo_pool_size', 'type': 'integer', 'default': 0, 'description': 'GEQO: number of individuals in the population', 'min': 0, 'max': 1000} 0.0 1000.0
+{'id': 117, 'name': 'geqo_seed', 'type': 'real', 'default': 0.0, 'description': 'GEQO: seed for random path selection', 'min': 0.0, 'max': 1.0} 0.0 1.0
+{'id': 118, 'name': 'geqo_selection_bias', 'type': 'real', 'default': 2.0, 'description': 'GEQO: selective pressure within the population', 'min': 1.5, 'max': 2.0} 1.5 2.0
+{'id': 119, 'name': 'geqo_threshold', 'type': 'integer', 'default': 12, 'description': 'Sets the threshold of FROM items beyond which GEQO is used', 'min': 2, 'max': 50} 2.0 50.0
+{'id': 123, 'name': 'hash_mem_multiplier', 'type': 'real', 'default': 1.0, 'description': 'Multiple of work_mem to use for hash tables', 'min': 1.0, 'max': 50.0} 1.0 50.0
+{'id': 138, 'name': 'jit_above_cost', 'type': 'integer', 'default': 100000, 'description': 'Perform JIT compilation if query is more expensive', 'min': -1, 'max': 1000000} -1.0 1000000.0
+{'id': 142, 'name': 'jit_inline_above_cost', 'type': 'integer', 'default': 500000, 'description': 'Perform JIT inlining if query is more expensive', 'min': -1, 'max': 5000000} -1.0 5000000.0
+{'id': 143, 'name': 'jit_optimize_above_cost', 'type': 'integer', 'default': 500000, 'description': 'Optimize JITed functions if query is more expensive', 'min': -1, 'max': 5000000} -1.0 5000000.0
+{'id': 147, 'name': 'join_collapse_limit', 'type': 'integer', 'default': 8, 'description': 'Sets the FROM-list size beyond which JOIN constructs are not flattened', 'min': 1, 'max': 50} 1.0 50.0
+{'id': 172, 'name': 'logical_decoding_work_mem', 'type': 'integer', 'default': 65536, 'description': 'Sets the maximum memory to be used for logical decoding', 'min': 64, 'max': 1048576} 64.0 1048576.0
+{'id': 195, 'name': 'maintenance_io_concurrency', 'type': 'integer', 'default': 10, 'description': 'A variant of effective_io_concurrency that is used for maintenance work', 'min': 0, 'max': 512} 0.0 512.0
+{'id': 196, 'name': 'maintenance_work_mem', 'type': 'integer', 'default': 65536, 'description': 'Sets the maximum memory to be used for maintenance operations', 'min': 1024, 'max': 1048576} 1024.0 1048576.0
+{'id': 197, 'name': 'max_connections', 'type': 'integer', 'default': 100, 'description': 'Sets the maximum number of concurrent connections', 'min': 5, 'max': 10000} 5.0 10000.0
+{'id': 198, 'name': 'max_files_per_process', 'type': 'integer', 'default': 1000, 'description': 'Sets the maximum number of simultaneously open files for each server process', 'min': 64, 'max': 50000} 64.0 50000.0
+{'id': 199, 'name': 'max_locks_per_transaction', 'type': 'integer', 'default': 64, 'description': 'Sets the maximum number of locks per transaction', 'min': 10, 'max': 1024} 10.0 1024.0
+{'id': 200, 'name': 'max_parallel_maintenance_workers', 'type': 'integer', 'default': 2, 'description': 'Sets the maximum number of parallel processes per maintenance operation', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 203, 'name': 'max_parallel_workers', 'type': 'integer', 'default': 8, 'description': 'Sets the maximum number of parallel workers that can be active at one time', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 204, 'name': 'max_parallel_workers_per_gather', 'type': 'integer', 'default': 2, 'description': 'Sets the maximum number of parallel processes per executor node', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 205, 'name': 'max_pred_locks_per_page', 'type': 'integer', 'default': 2, 'description': 'Sets the maximum number of predicate-locked tuples per page', 'min': 0, 'max': 1024} 0.0 1024.0
+{'id': 206, 'name': 'max_pred_locks_per_relation', 'type': 'integer', 'default': -2, 'description': 'Sets the maximum number of predicate-locked pages and tuples per relation', 'min': -100, 'max': 1024} -100.0 1024.0
+{'id': 207, 'name': 'max_pred_locks_per_transaction', 'type': 'integer', 'default': 64, 'description': 'Sets the maximum number of predicate locks per transaction', 'min': 10, 'max': 1024} 10.0 1024.0
+{'id': 208, 'name': 'max_prepared_transactions', 'type': 'integer', 'default': 0, 'description': 'Sets the maximum number of simultaneously prepared transactions', 'min': 0, 'max': 1024} 0.0 1024.0
+{'id': 211, 'name': 'max_stack_depth', 'type': 'integer', 'default': 100, 'description': 'Sets the maximum stack depth, in kilobytes', 'min': 100, 'max': 7680} 100.0 7680.0
+{'id': 216, 'name': 'max_wal_size', 'type': 'integer', 'default': 1024, 'description': 'Sets the WAL size that triggers a checkpoint', 'min': 32, 'max': 4096} 32.0 4096.0
+{'id': 217, 'name': 'max_worker_processes', 'type': 'integer', 'default': 8, 'description': 'Maximum number of concurrent worker processes', 'min': 0, 'max': 256} 0.0 256.0
+{'id': 218, 'name': 'min_dynamic_shared_memory', 'type': 'integer', 'default': 0, 'description': 'Amount of dynamic shared memory reserved at startup', 'min': 0, 'max': 65536} 0.0 65536.0
+{'id': 219, 'name': 'min_parallel_index_scan_size', 'type': 'integer', 'default': 64, 'description': 'Sets the minimum amount of index data for a parallel scan', 'min': 0, 'max': 8192} 0.0 8192.0
+{'id': 221, 'name': 'min_parallel_table_scan_size', 'type': 'integer', 'default': 1024, 'description': 'Sets the minimum amount of table data for a parallel scan', 'min': 0, 'max': 131072} 0.0 131072.0
+{'id': 222, 'name': 'min_wal_size', 'type': 'integer', 'default': 80, 'description': 'Sets the minimum size to shrink the WAL to', 'min': 32, 'max': 256} 32.0 256.0
+{'id': 223, 'name': 'old_snapshot_threshold', 'type': 'integer', 'default': -1, 'description': 'Time before a snapshot is too old to read pages changed after the snapshot was taken', 'min': -1, 'max': 86400} -1.0 86400.0
+{'id': 226, 'name': 'parallel_setup_cost', 'type': 'real', 'default': 1000.0, 'description': "Sets the planner's estimate of the cost of starting up worker processes for parallel query", 'min': 0.0, 'max': 2500.0} 0.0 2500.0
+{'id': 227, 'name': 'parallel_tuple_cost', 'type': 'real', 'default': 0.1, 'description': "Sets the planner's estimate of the cost of passing each tuple (row) from worker to master backend", 'min': 0.0, 'max': 4.0} 0.0 4.0
+{'id': 237, 'name': 'random_page_cost', 'type': 'real', 'default': 4.0, 'description': "Sets the planner's estimate of the cost of a nonsequentially fetched disk page", 'min': 0.0, 'max': 8.0} 0.0 8.0
+{'id': 250, 'name': 'recursive_worktable_factor', 'type': 'real', 'default': 10, 'description': "Sets the planner's estimate of the average size of a recursive query's working table", 'min': 0.001, 'max': 10000} 0.001 10000.0
+{'id': 262, 'name': 'seq_page_cost', 'type': 'real', 'default': 1.0, 'description': "Sets the planner's estimate of the cost of a sequentially fetched disk page", 'min': 0.0, 'max': 4.0} 0.0 4.0
+{'id': 265, 'name': 'shared_buffers', 'type': 'integer', 'default': 1024, 'description': 'Sets the number of shared memory buffers used by the server', 'min': 16, 'max': 1048576} 16.0 1048576.0
+{'id': 301, 'name': 'temp_buffers', 'type': 'integer', 'default': 1024, 'description': 'Sets the maximum number of temporary buffers used by each session', 'min': 100, 'max': 65536} 100.0 65536.0
+{'id': 302, 'name': 'temp_file_limit', 'type': 'integer', 'default': -1, 'description': 'Limits the total size of all temporary files used by each process', 'min': -1, 'max': 100000} -1.0 100000.0
+{'id': 325, 'name': 'vacuum_buffer_usage_limit', 'type': 'integer', 'default': 256, 'description': 'Sets the buffer pool size for VACUUM, ANALYZE, and autovacuum', 'min': 0, 'max': 16777216} 0.0 16777216.0
+{'id': 327, 'name': 'vacuum_cost_delay', 'type': 'integer', 'default': 0, 'description': 'Vacuum cost delay in milliseconds', 'min': 0, 'max': 100} 0.0 100.0
+{'id': 328, 'name': 'vacuum_cost_limit', 'type': 'integer', 'default': 200, 'description': 'Vacuum cost amount available before napping', 'min': 1, 'max': 10000} 1.0 10000.0
+{'id': 329, 'name': 'vacuum_cost_page_dirty', 'type': 'integer', 'default': 20, 'description': 'Vacuum cost for a page dirtied by vacuum', 'min': 0, 'max': 10000} 0.0 10000.0
+{'id': 330, 'name': 'vacuum_cost_page_hit', 'type': 'integer', 'default': 1, 'description': 'Vacuum cost for a page found in the buffer cache', 'min': 0, 'max': 10000} 0.0 10000.0
+{'id': 331, 'name': 'vacuum_cost_page_miss', 'type': 'integer', 'default': 10, 'description': 'Vacuum cost for a page not found in the buffer cache', 'min': 0, 'max': 10000} 0.0 10000.0
+{'id': 333, 'name': 'vacuum_failsafe_age', 'type': 'integer', 'default': 1600000000, 'description': 'Age at which VACUUM should trigger failsafe to avoid a wraparound outage', 'min': 0, 'max': 2100000000} 0.0 2100000000.0
+{'id': 334, 'name': 'vacuum_freeze_min_age', 'type': 'integer', 'default': 50000000, 'description': 'Minimum age at which VACUUM should freeze a table row', 'min': 0, 'max': 1000000000} 0.0 1000000000.0
+{'id': 336, 'name': 'vacuum_multixact_failsafe_age', 'type': 'integer', 'default': 1600000000, 'description': 'Multixact age at which VACUUM should trigger failsafe to avoid a wraparound outage', 'min': 0, 'max': 2000000000} 0.0 2000000000.0
+{'id': 337, 'name': 'vacuum_multixact_freeze_min_age', 'type': 'integer', 'default': 5000000, 'description': 'Minimum age at which VACUUM should freeze a MultiXactId in a table row', 'min': 0, 'max': 1000000000} 0.0 1000000000.0
+{'id': 338, 'name': 'vacuum_multixact_freeze_table_age', 'type': 'integer', 'default': 150000000, 'description': 'Multixact age at which VACUUM should scan whole table to freeze tuples', 'min': 0, 'max': 2000000000} 0.0 2000000000.0
+{'id': 339, 'name': 'wal_buffers', 'type': 'integer', 'default': -1, 'description': 'Sets the number of disk-page buffers in shared memory for WAL', 'min': -1, 'max': 65536} -1.0 65536.0
+{'id': 342, 'name': 'wal_decode_buffer_size', 'type': 'integer', 'default': 524288, 'description': 'Buffer size for reading ahead in the WAL during recovery', 'min': 65536, 'max': 1073741823} 65536.0 1073741823.0
+{'id': 355, 'name': 'wal_skip_threshold', 'type': 'integer', 'default': 2048, 'description': 'Size of new file to fsync instead of writing WAL', 'min': 0, 'max': 131072} 0.0 131072.0
+{'id': 357, 'name': 'wal_writer_delay', 'type': 'integer', 'default': 200, 'description': 'Time between WAL flushes performed in the WAL writer', 'min': 1, 'max': 4096} 1.0 4096.0
+{'id': 358, 'name': 'wal_writer_flush_after', 'type': 'integer', 'default': 128, 'description': 'Amount of WAL written out by WAL writer that triggers a flush', 'min': 0, 'max': 32768} 0.0 32768.0
+{'id': 359, 'name': 'work_mem', 'type': 'integer', 'default': 4096, 'description': 'Sets the maximum memory to be used for query workspaces', 'min': 64, 'max': 262144} 64.0 262144.0
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+{'name': 'postgres', 'version': '16.1'}
+{'name': 'benchbase', 'workload': 'tpcc', 'warmup_duration': 30, 'benchmark_duration': 300, 'workload_properties': {'scalefactor': 100, 'terminals': 40, 'work_rate': 'unlimited'}}
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Pending Tasks: 1
+Trial 0 Started
+Starting Evaluate
+Model Failed
+Trial 0 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 1 Started
+Starting Evaluate
+Model Failed
+Trial 1 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 2 Started
+Starting Evaluate
+Model Failed
+Trial 2 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 3 Started
+Starting Evaluate
+Model Failed
+Trial 3 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 4 Started
+Starting Evaluate
+Model Failed
+Trial 4 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 5 Started
+Starting Evaluate
+Model Failed
+Trial 5 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 6 Started
+Starting Evaluate
+Model Failed
+Trial 6 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 7 Started
+Starting Evaluate
+Model Failed
+Trial 7 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 8 Started
+Starting Evaluate
+Model Failed
+Trial 8 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 9 Started
+Starting Evaluate
+Model Failed
+Trial 9 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 0 Completed
+Pending Tasks: 1
+Trial 10 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 10 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 1 Completed
+Pending Tasks: 1
+Trial 11 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 11 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 2 Completed
+Pending Tasks: 1
+Trial 12 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 12 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 3 Completed
+Pending Tasks: 1
+Trial 13 Started
+Starting Evaluate
+Trial 13 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 4 Completed
+Pending Tasks: 1
+Trial 14 Started
+Starting Evaluate
+Trial 14 Completed
+Cannot save file into a non-existent directory: 'results'
+Trial 15 Completed
+Iteration 5 Completed
+Pending Tasks: 1
+Trial 15 Started
+Starting Evaluate
+Cannot save file into a non-existent directory: 'results'
+Iteration 6 Completed
+Pending Tasks: 1
+Trial 16 Started
+Starting Evaluate
+Trial 16 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 7 Completed
+Pending Tasks: 1
+Trial 17 Started
+Starting Evaluate
+Trial 17 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 8 Completed
+Pending Tasks: 1
+Trial 18 Started
+Starting Evaluate
+Trial 18 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 9 Completed
+Pending Tasks: 1
+Trial 19 Started
+Starting Evaluate
+Trial 19 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 10 Completed
+Pending Tasks: 1
+Trial 20 Started
+Starting Evaluate
+Trial 20 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 11 Completed
+Pending Tasks: 1
+Trial 21 Started
+Starting Evaluate
+Trial 21 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 12 Completed
+Pending Tasks: 1
+Trial 22 Started
+Starting Evaluate
+Trial 22 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 13 Completed
+Pending Tasks: 1
+Trial 23 Started
+Starting Evaluate
+Trial 23 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 14 Completed
+Pending Tasks: 1
+Trial 24 Started
+Starting Evaluate
+Trial 24 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 15 Completed
+Pending Tasks: 1
+Trial 25 Started
+Starting Evaluate
+Trial 25 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 16 Completed
+Pending Tasks: 1
+Trial 26 Started
+Starting Evaluate
+Trial 26 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 17 Completed
+Pending Tasks: 1
+Trial 27 Started
+Starting Evaluate
+Trial 27 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 18 Completed
+Pending Tasks: 1
+Trial 28 Started
+Starting Evaluate
+Trial 28 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 19 Completed
+Pending Tasks: 1
+Trial 29 Started
+Starting Evaluate
+Trial 29 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 20 Completed
+Pending Tasks: 1
+Trial 30 Started
+Starting Evaluate
+Trial 30 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 21 Completed
+Pending Tasks: 1
+Trial 31 Started
+Starting Evaluate
+Trial 31 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 22 Completed
+Pending Tasks: 1
+Trial 32 Started
+Starting Evaluate
+Trial 32 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 23 Completed
+Pending Tasks: 1
+Trial 33 Started
+Starting Evaluate
+Trial 33 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 24 Completed
+Pending Tasks: 1
+Trial 34 Started
+Starting Evaluate
+Trial 34 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 25 Completed
+Pending Tasks: 1
+Trial 35 Started
+Starting Evaluate
+Trial 35 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 26 Completed
+Pending Tasks: 1
+Trial 36 Started
+Starting Evaluate
+Trial 36 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 27 Completed
+Pending Tasks: 1
+Trial 37 Started
+Starting Evaluate
+Trial 37 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 28 Completed
+Pending Tasks: 1
+Trial 38 Started
+Starting Evaluate
+Trial 38 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 29 Completed
+Pending Tasks: 1
+Trial 39 Started
+Starting Evaluate
+Trial 39 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 30 Completed
+Pending Tasks: 1
+Trial 40 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 40 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 31 Completed
+Pending Tasks: 2
+Trial 41 Started
+Starting Evaluate
+Trial 41 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 32 Completed
+Pending Tasks: 1
+Trial 42 Started
+Starting Evaluate
+Trial 42 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 33 Completed
+Pending Tasks: 1
+Trial 43 Started
+Starting Evaluate
+Trial 43 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 34 Completed
+Pending Tasks: 2
+Trial 44 Started
+Starting Evaluate
+Trial 44 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 35 Completed
+Pending Tasks: 2
+Trial 45 Started
+Starting Evaluate
+Trial 45 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 46 Started
+Starting Evaluate
+Trial 46 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 36 Completed
+Pending Tasks: 1
+Trial 47 Started
+Starting Evaluate
+Trial 47 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 48 Started
+Starting Evaluate
+Trial 48 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 37 Completed
+Pending Tasks: 1
+Trial 49 Started
+Starting Evaluate
+Trial 49 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 50 Started
+Starting Evaluate
+Trial 50 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 38 Completed
+Pending Tasks: 1
+Trial 51 Started
+Starting Evaluate
+Trial 51 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 39 Completed
+Pending Tasks: 1
+Trial 52 Started
+Starting Evaluate
+Trial 52 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 53 Started
+Starting Evaluate
+Trial 53 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 54 Started
+Starting Evaluate
+Trial 54 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 40 Completed
+Pending Tasks: 1
+Trial 55 Started
+Starting Evaluate
+Trial 55 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 41 Completed
+Pending Tasks: 1
+Trial 56 Started
+Starting Evaluate
+Trial 56 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 57 Started
+Starting Evaluate
+Trial 57 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 58 Started
+Starting Evaluate
+Trial 58 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 42 Completed
+Pending Tasks: 1
+Trial 59 Started
+Starting Evaluate
+Trial 59 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 43 Completed
+Pending Tasks: 1
+Trial 60 Started
+Starting Evaluate
+Trial 60 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 61 Started
+Starting Evaluate
+Trial 61 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 62 Started
+Starting Evaluate
+Trial 62 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 63 Started
+Starting Evaluate
+Trial 63 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 64 Started
+Starting Evaluate
+Trial 64 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 44 Completed
+Pending Tasks: 1
+Trial 65 Started
+Starting Evaluate
+Trial 65 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 45 Completed
+Pending Tasks: 1
+Trial 66 Started
+Starting Evaluate
+Trial 66 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 46 Completed
+Pending Tasks: 1
+Trial 67 Started
+Starting Evaluate
+Trial 67 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 68 Started
+Starting Evaluate
+Trial 68 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 47 Completed
+Pending Tasks: 2
+Trial 69 Started
+Starting Evaluate
+Trial 69 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 48 Completed
+Pending Tasks: 2
+Trial 70 Started
+Starting Evaluate
+Trial 70 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 71 Started
+Starting Evaluate
+Trial 71 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 72 Started
+Starting Evaluate
+Trial 72 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 73 Started
+Starting Evaluate
+Trial 73 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 74 Started
+Starting Evaluate
+Trial 74 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 75 Started
+Starting Evaluate
+Trial 75 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 76 Started
+Starting Evaluate
+Trial 76 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 77 Started
+Starting Evaluate
+Trial 77 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 49 Completed
+Pending Tasks: 1
+Trial 78 Started
+Starting Evaluate
+Trial 78 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 79 Started
+Starting Evaluate
+Trial 79 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 50 Completed
+Pending Tasks: 1
+Trial 80 Started
+Starting Evaluate
+Trial 80 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 81 Started
+Starting Evaluate
+Trial 81 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 82 Started
+Starting Evaluate
+Trial 82 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 83 Started
+Starting Evaluate
+Trial 83 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 51 Completed
+Pending Tasks: 1
+Trial 84 Started
+Starting Evaluate
+Trial 84 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 52 Completed
+Pending Tasks: 1
+Trial 85 Started
+Starting Evaluate
+Trial 85 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 53 Completed
+Pending Tasks: 1
+Trial 86 Started
+Starting Evaluate
+Trial 86 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 54 Completed
+Pending Tasks: 1
+Trial 87 Started
+Starting Evaluate
+Trial 87 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 55 Completed
+Pending Tasks: 1
+Trial 88 Started
+Starting Evaluate
+Trial 88 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 89 Started
+Starting Evaluate
+Trial 89 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 56 Completed
+Pending Tasks: 2
+Trial 90 Started
+Starting Evaluate
+Trial 90 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 57 Completed
+Pending Tasks: 1
+Trial 91 Started
+Starting Evaluate
+Trial 91 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 58 Completed
+Pending Tasks: 2
+Trial 92 Started
+Starting Evaluate
+Trial 92 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 93 Started
+Starting Evaluate
+Trial 93 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 94 Started
+Starting Evaluate
+Trial 94 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 95 Started
+Starting Evaluate
+Trial 95 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 59 Completed
+Pending Tasks: 1
+Trial 96 Started
+Starting Evaluate
+Trial 96 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 97 Started
+Starting Evaluate
+Trial 97 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 98 Started
+Starting Evaluate
+Trial 98 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 99 Started
+Starting Evaluate
+Trial 99 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 100 Started
+Starting Evaluate
+Trial 100 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 60 Completed
+Pending Tasks: 1
+Trial 101 Started
+Starting Evaluate
+Trial 101 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 61 Completed
+Pending Tasks: 1
+Trial 102 Started
+Starting Evaluate
+Trial 102 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 103 Started
+Starting Evaluate
+Trial 103 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 62 Completed
+Pending Tasks: 1
+Trial 104 Started
+Starting Evaluate
+Trial 104 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 105 Started
+Starting Evaluate
+Trial 105 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 106 Started
+Starting Evaluate
+Trial 106 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 107 Started
+Starting Evaluate
+Trial 107 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 108 Started
+Starting Evaluate
+Trial 108 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 63 Completed
+Pending Tasks: 1
+Trial 109 Started
+Starting Evaluate
+Trial 109 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 64 Completed
+Pending Tasks: 1
+Trial 110 Started
+Starting Evaluate
+Trial 110 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 65 Completed
+Pending Tasks: 1
+Trial 111 Started
+Starting Evaluate
+Trial 111 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 66 Completed
+Pending Tasks: 1
+Trial 112 Started
+Starting Evaluate
+Trial 112 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 67 Completed
+Pending Tasks: 1
+Trial 113 Started
+Starting Evaluate
+Trial 113 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 68 Completed
+Pending Tasks: 1
+Trial 114 Started
+Starting Evaluate
+Trial 114 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 69 Completed
+Pending Tasks: 1
+Trial 115 Started
+Starting Evaluate
+Trial 115 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 70 Completed
+Pending Tasks: 1
+Trial 116 Started
+Starting Evaluate
+Trial 116 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 117 Started
+Starting Evaluate
+Trial 117 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 71 Completed
+Pending Tasks: 1
+Trial 118 Started
+Starting Evaluate
+Trial 118 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 119 Started
+Starting Evaluate
+Trial 119 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 72 Completed
+Pending Tasks: 1
+Trial 120 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 120 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 73 Completed
+Pending Tasks: 1
+Trial 121 Started
+Starting Evaluate
+Trial 121 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 122 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 122 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 74 Completed
+Pending Tasks: 1
+Trial 123 Started
+Starting Evaluate
+Trial 123 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 75 Completed
+Pending Tasks: 1
+Trial 124 Started
+Starting Evaluate
+Trial 124 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 76 Completed
+Pending Tasks: 1
+Trial 125 Started
+Starting Evaluate
+Trial 125 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 77 Completed
+Pending Tasks: 1
+Trial 126 Started
+Starting Evaluate
+Trial 126 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 78 Completed
+Pending Tasks: 1
+Trial 127 Started
+Starting Evaluate
+Trial 127 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 79 Completed
+Pending Tasks: 1
+Trial 128 Started
+Starting Evaluate
+Trial 128 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 80 Completed
+Pending Tasks: 1
+Trial 129 Started
+Starting Evaluate
+Trial 129 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 81 Completed
+Pending Tasks: 1
+Trial 130 Started
+Starting Evaluate
+Trial 130 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 82 Completed
+Pending Tasks: 1
+Trial 131 Started
+Starting Evaluate
+Trial 131 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 132 Started
+Starting Evaluate
+Trial 132 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 83 Completed
+Pending Tasks: 1
+Trial 133 Started
+Starting Evaluate
+Trial 133 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 134 Started
+Starting Evaluate
+Trial 134 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 84 Completed
+Pending Tasks: 1
+Trial 135 Started
+Starting Evaluate
+Trial 135 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 136 Started
+Starting Evaluate
+Trial 136 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 137 Started
+Starting Evaluate
+Trial 137 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 85 Completed
+Pending Tasks: 1
+Trial 138 Started
+Starting Evaluate
+Trial 138 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 86 Completed
+Pending Tasks: 1
+Trial 139 Started
+Starting Evaluate
+Trial 139 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 87 Completed
+Pending Tasks: 1
+Trial 140 Started
+Starting Evaluate
+Trial 140 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 141 Started
+Starting Evaluate
+Trial 141 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 142 Started
+Starting Evaluate
+Trial 142 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 143 Started
+Starting Evaluate
+Trial 143 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 144 Started
+Starting Evaluate
+Trial 144 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 145 Started
+Starting Evaluate
+Trial 145 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 88 Completed
+Pending Tasks: 1
+Trial 146 Started
+Starting Evaluate
+Trial 146 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 89 Completed
+Pending Tasks: 1
+Trial 147 Started
+Starting Evaluate
+Trial 147 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 90 Completed
+Pending Tasks: 1
+Trial 148 Started
+Starting Evaluate
+Trial 148 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 91 Completed
+Pending Tasks: 2
+Trial 149 Started
+Starting Evaluate
+Trial 149 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 92 Completed
+Pending Tasks: 1
+Trial 150 Started
+Starting Evaluate
+Trial 150 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 93 Completed
+Pending Tasks: 2
+Trial 151 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 151 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 94 Completed
+Pending Tasks: 1
+Trial 152 Started
+Starting Evaluate
+Trial 152 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 95 Completed
+Pending Tasks: 1
+Trial 153 Started
+Starting Evaluate
+Trial 153 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 154 Started
+Starting Evaluate
+Trial 154 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 155 Started
+Starting Evaluate
+Trial 155 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 156 Started
+Starting Evaluate
+Trial 156 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 157 Started
+Starting Evaluate
+Trial 157 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 158 Started
+Starting Evaluate
+Trial 158 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 159 Started
+Starting Evaluate
+Trial 159 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 160 Started
+Starting Evaluate
+Trial 160 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 96 Completed
+Pending Tasks: 1
+Trial 161 Started
+Starting Evaluate
+Trial 161 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 162 Started
+Starting Evaluate
+Trial 162 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 97 Completed
+Pending Tasks: 1
+Trial 163 Started
+Starting Evaluate
+Trial 163 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 98 Completed
+Pending Tasks: 1
+Trial 164 Started
+Starting Evaluate
+Trial 164 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 165 Started
+Starting Evaluate
+Trial 165 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 166 Started
+Starting Evaluate
+Trial 166 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 99 Completed
+Pending Tasks: 1
+Trial 167 Started
+Starting Evaluate
+Trial 167 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 168 Started
+Starting Evaluate
+Trial 168 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 100 Completed
+Pending Tasks: 1
+Trial 169 Started
+Starting Evaluate
+Trial 169 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 101 Completed
+Pending Tasks: 1
+Trial 170 Started
+Starting Evaluate
+Trial 170 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 171 Started
+Starting Evaluate
+Trial 171 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 102 Completed
+Pending Tasks: 1
+Trial 172 Started
+Starting Evaluate
+Trial 172 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 103 Completed
+Pending Tasks: 1
+Trial 173 Started
+Starting Evaluate
+Trial 173 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 104 Completed
+Pending Tasks: 2
+Trial 174 Started
+Starting Evaluate
+Trial 174 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 105 Completed
+Pending Tasks: 1
+Trial 175 Started
+Starting Evaluate
+Trial 175 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 106 Completed
+Pending Tasks: 2
+Trial 176 Started
+Starting Evaluate
+Trial 176 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 107 Completed
+Pending Tasks: 2
+Trial 177 Started
+Starting Evaluate
+Trial 177 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 108 Completed
+Pending Tasks: 1
+Trial 178 Started
+Starting Evaluate
+Trial 178 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 109 Completed
+Pending Tasks: 1
+Trial 179 Started
+Starting Evaluate
+Trial 179 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 110 Completed
+Pending Tasks: 1
+Trial 180 Started
+Starting Evaluate
+Trial 180 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 111 Completed
+Pending Tasks: 2
+Trial 181 Started
+Starting Evaluate
+Trial 181 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 182 Started
+Starting Evaluate
+Trial 182 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 183 Started
+Starting Evaluate
+Trial 183 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 184 Started
+Starting Evaluate
+Trial 184 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 185 Started
+Starting Evaluate
+Trial 185 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 2
+Trial 186 Started
+Starting Evaluate
+Trial 186 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 2
+Trial 187 Started
+Starting Evaluate
+Trial 187 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 188 Started
+Starting Evaluate
+Trial 188 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 189 Started
+Starting Evaluate
+Trial 189 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 190 Started
+Starting Evaluate
+Trial 190 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 112 Completed
+Pending Tasks: 1
+Trial 191 Started
+Starting Evaluate
+Trial 191 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 192 Started
+Starting Evaluate
+Trial 192 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 113 Completed
+Pending Tasks: 1
+Trial 193 Started
+Starting Evaluate
+Trial 193 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 194 Started
+Starting Evaluate
+Trial 194 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 195 Started
+Starting Evaluate
+Trial 195 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 196 Started
+Starting Evaluate
+Trial 196 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 114 Completed
+Pending Tasks: 1
+Trial 197 Started
+Starting Evaluate
+Trial 197 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 198 Started
+Starting Evaluate
+Trial 198 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 199 Started
+Starting Evaluate
+Trial 199 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 115 Completed
+Pending Tasks: 1
+Trial 200 Started
+Starting Evaluate
+Trial 200 Completed
+Cannot save file into a non-existent directory: 'results'
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 116 Completed
+Pending Tasks: 1
+Trial 201 Started
+Starting Evaluate
+Trial 201 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 117 Completed
+Pending Tasks: 1
+Trial 202 Started
+Starting Evaluate
+Trial 202 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 118 Completed
+Pending Tasks: 1
+Trial 203 Started
+Starting Evaluate
+Trial 203 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 119 Completed
+Pending Tasks: 1
+Trial 204 Started
+Starting Evaluate
+Trial 204 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 120 Completed
+Pending Tasks: 1
+Trial 205 Started
+Starting Evaluate
+Trial 205 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 121 Completed
+Pending Tasks: 1
+Trial 206 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 206 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 122 Completed
+Pending Tasks: 1
+Trial 207 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 207 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 123 Completed
+Pending Tasks: 1
+Trial 208 Started
+Starting Evaluate
+Trial 208 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 124 Completed
+Pending Tasks: 1
+Trial 209 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 209 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 125 Completed
+Pending Tasks: 1
+Trial 210 Started
+Starting Evaluate
+Trial 210 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 211 Started
+Starting Evaluate
+Trial 211 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 126 Completed
+Pending Tasks: 1
+Trial 212 Started
+Starting Evaluate
+Trial 212 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 127 Completed
+Pending Tasks: 1
+Trial 213 Started
+Starting Evaluate
+Trial 213 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 214 Started
+Starting Evaluate
+Trial 214 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 128 Completed
+Pending Tasks: 1
+Trial 215 Started
+Starting Evaluate
+Trial 215 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 216 Started
+Starting Evaluate
+Trial 216 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 217 Started
+Starting Evaluate
+Trial 217 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 218 Started
+Starting Evaluate
+Trial 218 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 219 Started
+Starting Evaluate
+Trial 219 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 129 Completed
+Pending Tasks: 1
+Trial 220 Started
+Starting Evaluate
+Trial 220 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 130 Completed
+Pending Tasks: 1
+Trial 221 Started
+Starting Evaluate
+Trial 221 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 131 Completed
+Pending Tasks: 1
+Trial 222 Started
+Starting Evaluate
+Trial 222 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 132 Completed
+Pending Tasks: 1
+Trial 223 Started
+Starting Evaluate
+Trial 223 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 133 Completed
+Pending Tasks: 1
+Trial 224 Started
+Starting Evaluate
+Trial 224 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 134 Completed
+Pending Tasks: 1
+Trial 225 Started
+Starting Evaluate
+Trial 225 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 135 Completed
+Pending Tasks: 1
+Trial 226 Started
+Starting Evaluate
+Trial 226 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 227 Started
+Starting Evaluate
+Trial 227 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 228 Started
+Starting Evaluate
+Trial 228 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 136 Completed
+Pending Tasks: 1
+Trial 229 Started
+Starting Evaluate
+Trial 229 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 137 Completed
+Pending Tasks: 1
+Trial 230 Started
+Starting Evaluate
+Trial 230 Completed
+Cannot save file into a non-existent directory: 'results'
+Pending Tasks: 1
+Trial 231 Started
+Starting Evaluate
+Trial 231 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 138 Completed
+Pending Tasks: 1
+Trial 232 Started
+Starting Evaluate
+Trial 232 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 139 Completed
+Pending Tasks: 1
+Trial 233 Started
+Starting Evaluate
+Trial 233 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 140 Completed
+Pending Tasks: 1
+Trial 234 Started
+Starting Evaluate
+Trial 234 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 141 Completed
+Pending Tasks: 1
+Trial 235 Started
+Starting Evaluate
+Trial 235 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 142 Completed
+Pending Tasks: 1
+Trial 236 Started
+Starting Evaluate
+Trial 236 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 143 Completed
+Pending Tasks: 1
+Trial 237 Started
+Starting Evaluate
+Trial 237 Completed
+Cannot save file into a non-existent directory: 'results'
+Iteration 144 Completed
+Pending Tasks: 1
+Trial 238 Started
+Starting Evaluate
+Trial 238 Completed
+Cannot save file into a non-existent directory: 'results'
+Raw score too low, returning unadjusted values
+Iteration 145 Completed
+Pending Tasks: 1
+Trial 239 Started
+Starting Evaluate
+Trial 239 Completed
+Raw score too low, returning unadjusted values
+Iteration 146 Completed
+Pending Tasks: 2
+Trial 240 Started
+Starting Evaluate
+Trial 240 Completed
+Iteration 147 Completed
+Pending Tasks: 2
+Trial 241 Started
+Starting Evaluate
+Trial 241 Completed
+Pending Tasks: 1
+Trial 242 Started
+Starting Evaluate
+Trial 242 Completed
+Pending Tasks: 2
+Trial 243 Started
+Starting Evaluate
+Trial 243 Completed
+Pending Tasks: 1
+Trial 244 Started
+Starting Evaluate
+Trial 244 Completed
+Pending Tasks: 1
+Trial 245 Started
+Starting Evaluate
+Trial 245 Completed
+Pending Tasks: 1
+Trial 246 Started
+Starting Evaluate
+Trial 246 Completed
+Pending Tasks: 1
+Trial 247 Started
+Starting Evaluate
+Trial 247 Completed
+Iteration 148 Completed
+Pending Tasks: 1
+Trial 248 Started
+Starting Evaluate
+Trial 248 Completed
+Pending Tasks: 1
+Trial 249 Started
+Starting Evaluate
+Trial 249 Completed
+Pending Tasks: 1
+Trial 250 Started
+Starting Evaluate
+Trial 250 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 149 Completed
+Pending Tasks: 1
+Trial 251 Started
+Starting Evaluate
+Trial 251 Completed
+Pending Tasks: 1
+Trial 252 Started
+Starting Evaluate
+Trial 252 Completed
+Iteration 150 Completed
+Pending Tasks: 1
+Trial 253 Started
+Starting Evaluate
+Trial 253 Completed
+Iteration 151 Completed
+Pending Tasks: 1
+Trial 254 Started
+Starting Evaluate
+Trial 254 Completed
+Pending Tasks: 1
+Trial 255 Started
+Starting Evaluate
+Trial 255 Completed
+Iteration 152 Completed
+Pending Tasks: 1
+Trial 256 Started
+Starting Evaluate
+Trial 256 Completed
+Pending Tasks: 1
+Trial 257 Started
+Starting Evaluate
+Trial 257 Completed
+Pending Tasks: 1
+Trial 258 Started
+Starting Evaluate
+Trial 258 Completed
+Iteration 153 Completed
+Pending Tasks: 1
+Trial 259 Started
+Starting Evaluate
+Trial 259 Completed
+Iteration 154 Completed
+Pending Tasks: 1
+Trial 260 Started
+Starting Evaluate
+Trial 260 Completed
+Iteration 155 Completed
+Pending Tasks: 1
+Trial 261 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 261 Completed
+Raw score too low, returning unadjusted values
+Iteration 156 Completed
+Pending Tasks: 1
+Trial 262 Started
+Starting Evaluate
+Trial 262 Completed
+Iteration 157 Completed
+Pending Tasks: 1
+Trial 263 Started
+Starting Evaluate
+Trial 263 Completed
+Iteration 158 Completed
+Pending Tasks: 1
+Trial 264 Started
+Starting Evaluate
+Trial 264 Completed
+Iteration 159 Completed
+Pending Tasks: 1
+Trial 265 Started
+Starting Evaluate
+Trial 265 Completed
+Iteration 160 Completed
+Pending Tasks: 1
+Trial 266 Started
+Starting Evaluate
+Trial 266 Completed
+Iteration 161 Completed
+Pending Tasks: 1
+Trial 267 Started
+Starting Evaluate
+Trial 267 Completed
+Pending Tasks: 1
+Trial 268 Started
+Starting Evaluate
+Trial 268 Completed
+Iteration 162 Completed
+Pending Tasks: 1
+Trial 269 Started
+Starting Evaluate
+Trial 269 Completed
+Pending Tasks: 1
+Trial 270 Started
+Starting Evaluate
+Trial 270 Completed
+Iteration 163 Completed
+Pending Tasks: 2
+Trial 271 Started
+Starting Evaluate
+Trial 271 Completed
+Pending Tasks: 1
+Trial 272 Started
+Starting Evaluate
+Trial 272 Completed
+Pending Tasks: 1
+Trial 273 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 273 Completed
+Raw score too low, returning unadjusted values
+Iteration 164 Completed
+Pending Tasks: 1
+Trial 274 Started
+Starting Evaluate
+Trial 274 Completed
+Pending Tasks: 1
+Trial 275 Started
+Starting Evaluate
+Trial 275 Completed
+Pending Tasks: 1
+Trial 276 Started
+Starting Evaluate
+Trial 276 Completed
+Pending Tasks: 1
+Trial 277 Started
+Starting Evaluate
+Trial 277 Completed
+Pending Tasks: 1
+Trial 278 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 278 Completed
+Raw score too low, returning unadjusted values
+Iteration 165 Completed
+Pending Tasks: 1
+Trial 279 Started
+Starting Evaluate
+Trial 279 Completed
+Pending Tasks: 1
+Trial 280 Started
+Starting Evaluate
+Trial 280 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 166 Completed
+Pending Tasks: 1
+Trial 281 Started
+Starting Evaluate
+Trial 281 Completed
+Pending Tasks: 1
+Trial 282 Started
+Starting Evaluate
+Trial 282 Completed
+Pending Tasks: 1
+Trial 283 Started
+Starting Evaluate
+Trial 283 Completed
+Iteration 167 Completed
+Pending Tasks: 1
+Trial 284 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 284 Completed
+Raw score too low, returning unadjusted values
+Iteration 168 Completed
+Pending Tasks: 1
+Trial 285 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 285 Completed
+Raw score too low, returning unadjusted values
+Iteration 169 Completed
+Pending Tasks: 1
+Trial 286 Started
+Starting Evaluate
+Trial 286 Completed
+Iteration 170 Completed
+Pending Tasks: 2
+Trial 287 Started
+Starting Evaluate
+Trial 287 Completed
+Pending Tasks: 1
+Trial 288 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:2, grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable"}"
+>
+Trial 288 Completed
+Raw score too low, returning unadjusted values
+Iteration 171 Completed
+Pending Tasks: 1
+Trial 289 Started
+Starting Evaluate
+Trial 289 Completed
+Iteration 172 Completed
+Pending Tasks: 1
+Trial 290 Started
+Starting Evaluate
+Trial 290 Completed
+Iteration 173 Completed
+Pending Tasks: 1
+Trial 291 Started
+Starting Evaluate
+Trial 291 Completed
+Raw score too low, returning unadjusted values
+Iteration 174 Completed
+Pending Tasks: 1
+Trial 292 Started
+Starting Evaluate
+Trial 292 Completed
+Pending Tasks: 1
+Trial 293 Started
+Starting Evaluate
+Trial 293 Completed
+Iteration 175 Completed
+Pending Tasks: 1
+Trial 294 Started
+Starting Evaluate
+Trial 294 Completed
+Pending Tasks: 1
+Trial 295 Started
+Starting Evaluate
+Trial 295 Completed
+Pending Tasks: 1
+Trial 296 Started
+Starting Evaluate
+Trial 296 Completed
+Iteration 176 Completed
+Pending Tasks: 1
+Trial 297 Started
+Starting Evaluate
+Trial 297 Completed
+Iteration 177 Completed
+Pending Tasks: 1
+Trial 298 Started
+Starting Evaluate
+Trial 298 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 178 Completed
+Pending Tasks: 1
+Trial 299 Started
+Starting Evaluate
+Trial 299 Completed
+Iteration 179 Completed
+Pending Tasks: 1
+Trial 300 Started
+Starting Evaluate
+Trial 300 Completed
+Iteration 180 Completed
+Pending Tasks: 1
+Trial 301 Started
+Starting Evaluate
+Trial 301 Completed
+Raw score too low, returning unadjusted values
+Iteration 181 Completed
+Pending Tasks: 1
+Trial 302 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 302 Completed
+Raw score too low, returning unadjusted values
+Iteration 182 Completed
+Pending Tasks: 1
+Trial 303 Started
+Starting Evaluate
+Trial 303 Completed
+Iteration 183 Completed
+Pending Tasks: 1
+Trial 304 Started
+Starting Evaluate
+Trial 304 Completed
+Iteration 184 Completed
+Pending Tasks: 1
+Trial 305 Started
+Starting Evaluate
+Trial 305 Completed
+Pending Tasks: 1
+Trial 306 Started
+Starting Evaluate
+Trial 306 Completed
+Iteration 185 Completed
+Pending Tasks: 1
+Trial 307 Started
+Starting Evaluate
+Trial 307 Completed
+Iteration 186 Completed
+Pending Tasks: 1
+Trial 308 Started
+Starting Evaluate
+Trial 308 Completed
+Iteration 187 Completed
+Pending Tasks: 1
+Trial 309 Started
+Starting Evaluate
+Trial 309 Completed
+Pending Tasks: 1
+Trial 310 Started
+Starting Evaluate
+Trial 310 Completed
+Iteration 188 Completed
+Pending Tasks: 1
+Trial 311 Started
+Starting Evaluate
+Trial 311 Completed
+Pending Tasks: 1
+Trial 312 Started
+Starting Evaluate
+Trial 312 Completed
+Iteration 189 Completed
+Pending Tasks: 1
+Trial 313 Started
+Starting Evaluate
+Trial 313 Completed
+Iteration 190 Completed
+Pending Tasks: 1
+Trial 314 Started
+Starting Evaluate
+Trial 314 Completed
+Pending Tasks: 1
+Trial 315 Started
+Starting Evaluate
+Trial 315 Completed
+Pending Tasks: 1
+Trial 316 Started
+Starting Evaluate
+Trial 316 Completed
+Pending Tasks: 1
+Trial 317 Started
+Starting Evaluate
+Trial 317 Completed
+Pending Tasks: 1
+Trial 318 Started
+Starting Evaluate
+Trial 318 Completed
+Iteration 191 Completed
+Pending Tasks: 1
+Trial 319 Started
+Starting Evaluate
+Trial 319 Completed
+Pending Tasks: 1
+Trial 320 Started
+Starting Evaluate
+Trial 320 Completed
+Iteration 192 Completed
+Pending Tasks: 1
+Trial 321 Started
+Starting Evaluate
+Trial 321 Completed
+Pending Tasks: 1
+Trial 322 Started
+Starting Evaluate
+Trial 322 Completed
+Iteration 193 Completed
+Pending Tasks: 1
+Trial 323 Started
+Starting Evaluate
+Trial 323 Completed
+Iteration 194 Completed
+Pending Tasks: 1
+Trial 324 Started
+Starting Evaluate
+Trial 324 Completed
+Iteration 195 Completed
+Pending Tasks: 1
+Trial 325 Started
+Starting Evaluate
+Trial 325 Completed
+Iteration 196 Completed
+Pending Tasks: 2
+Trial 326 Started
+Starting Evaluate
+Trial 326 Completed
+Iteration 197 Completed
+Pending Tasks: 1
+Trial 327 Started
+Starting Evaluate
+Trial 327 Completed
+Iteration 198 Completed
+Pending Tasks: 1
+Trial 328 Started
+Starting Evaluate
+Trial 328 Completed
+Raw score too low, returning unadjusted values
+Iteration 199 Completed
+Pending Tasks: 1
+Trial 329 Started
+Starting Evaluate
+Trial 329 Completed
+Pending Tasks: 1
+Trial 330 Started
+Starting Evaluate
+Trial 330 Completed
+Pending Tasks: 2
+Trial 331 Started
+Starting Evaluate
+Trial 331 Completed
+Pending Tasks: 1
+Trial 332 Started
+Starting Evaluate
+Trial 332 Completed
+Pending Tasks: 1
+Trial 333 Started
+Starting Evaluate
+Trial 333 Completed
+Pending Tasks: 1
+Trial 334 Started
+Starting Evaluate
+Trial 334 Completed
+Pending Tasks: 1
+Trial 335 Started
+Starting Evaluate
+Trial 335 Completed
+Pending Tasks: 1
+Trial 336 Started
+Starting Evaluate
+Trial 336 Completed
+Iteration 200 Completed
+Pending Tasks: 1
+Trial 337 Started
+Starting Evaluate
+Trial 337 Completed
+Iteration 201 Completed
+Pending Tasks: 1
+Trial 338 Started
+Starting Evaluate
+Trial 338 Completed
+Pending Tasks: 1
+Trial 339 Started
+Starting Evaluate
+Trial 339 Completed
+Pending Tasks: 1
+Trial 340 Started
+Starting Evaluate
+Trial 340 Completed
+Iteration 202 Completed
+Pending Tasks: 1
+Trial 341 Started
+Starting Evaluate
+Trial 341 Completed
+Iteration 203 Completed
+Pending Tasks: 1
+Trial 342 Started
+Starting Evaluate
+Trial 342 Completed
+Pending Tasks: 1
+Trial 343 Started
+Starting Evaluate
+Trial 343 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 204 Completed
+Pending Tasks: 1
+Trial 344 Started
+Starting Evaluate
+Trial 344 Completed
+Pending Tasks: 1
+Trial 345 Started
+Starting Evaluate
+Trial 345 Completed
+Iteration 205 Completed
+Pending Tasks: 1
+Trial 346 Started
+Starting Evaluate
+Trial 346 Completed
+Pending Tasks: 1
+Trial 347 Started
+Starting Evaluate
+Trial 347 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 206 Completed
+Pending Tasks: 1
+Trial 348 Started
+Starting Evaluate
+Trial 348 Completed
+Iteration 207 Completed
+Pending Tasks: 2
+Trial 349 Started
+Starting Evaluate
+Trial 349 Completed
+Iteration 208 Completed
+Pending Tasks: 2
+Trial 350 Started
+Starting Evaluate
+Trial 350 Completed
+Iteration 209 Completed
+Pending Tasks: 2
+Trial 351 Started
+Starting Evaluate
+Trial 351 Completed
+Iteration 210 Completed
+Pending Tasks: 2
+Trial 352 Started
+Starting Evaluate
+Trial 352 Completed
+Iteration 211 Completed
+Pending Tasks: 2
+Trial 353 Started
+Starting Evaluate
+Trial 353 Completed
+Iteration 212 Completed
+Pending Tasks: 1
+Trial 354 Started
+Starting Evaluate
+Trial 354 Completed
+Raw score too low, returning unadjusted values
+Iteration 213 Completed
+Pending Tasks: 2
+Trial 355 Started
+Starting Evaluate
+Trial 355 Completed
+Iteration 214 Completed
+Pending Tasks: 1
+Trial 356 Started
+Starting Evaluate
+Trial 356 Completed
+Iteration 215 Completed
+Pending Tasks: 1
+Trial 357 Started
+Starting Evaluate
+Trial 357 Completed
+Iteration 216 Completed
+Pending Tasks: 1
+Trial 358 Started
+Starting Evaluate
+Trial 358 Completed
+Pending Tasks: 1
+Trial 359 Started
+Starting Evaluate
+Trial 359 Completed
+Pending Tasks: 1
+Trial 360 Started
+Starting Evaluate
+Trial 360 Completed
+Pending Tasks: 1
+Trial 361 Started
+Starting Evaluate
+Trial 361 Completed
+Pending Tasks: 1
+Trial 362 Started
+Starting Evaluate
+Trial 362 Completed
+Pending Tasks: 1
+Trial 363 Started
+Starting Evaluate
+Trial 363 Completed
+Pending Tasks: 1
+Trial 364 Started
+Starting Evaluate
+Trial 364 Completed
+Iteration 217 Completed
+Pending Tasks: 1
+Trial 365 Started
+Starting Evaluate
+Trial 365 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 218 Completed
+Pending Tasks: 1
+Trial 366 Started
+Starting Evaluate
+Trial 366 Completed
+Iteration 219 Completed
+Pending Tasks: 1
+Trial 367 Started
+Starting Evaluate
+Trial 367 Completed
+Pending Tasks: 1
+Trial 368 Started
+Starting Evaluate
+Trial 368 Completed
+Pending Tasks: 1
+Trial 369 Started
+Starting Evaluate
+Trial 369 Completed
+Pending Tasks: 1
+Trial 370 Started
+Starting Evaluate
+Trial 370 Completed
+Pending Tasks: 1
+Trial 371 Started
+Starting Evaluate
+Trial 371 Completed
+Pending Tasks: 1
+Trial 372 Started
+Starting Evaluate
+Trial 372 Completed
+Pending Tasks: 1
+Trial 373 Started
+Starting Evaluate
+Trial 373 Completed
+Iteration 220 Completed
+Pending Tasks: 1
+Trial 374 Started
+Starting Evaluate
+Trial 374 Completed
+Iteration 221 Completed
+Pending Tasks: 1
+Trial 375 Started
+Starting Evaluate
+Trial 375 Completed
+Iteration 222 Completed
+Pending Tasks: 1
+Trial 376 Started
+Starting Evaluate
+Trial 376 Completed
+Iteration 223 Completed
+Pending Tasks: 1
+Trial 377 Started
+Starting Evaluate
+Trial 377 Completed
+Iteration 224 Completed
+Pending Tasks: 1
+Trial 378 Started
+Starting Evaluate
+Trial 378 Completed
+Iteration 225 Completed
+Pending Tasks: 1
+Trial 379 Started
+Starting Evaluate
+Trial 379 Completed
+Iteration 226 Completed
+Pending Tasks: 1
+Trial 380 Started
+Starting Evaluate
+Trial 380 Completed
+Pending Tasks: 1
+Trial 381 Started
+Starting Evaluate
+Trial 381 Completed
+Pending Tasks: 1
+Trial 382 Started
+Starting Evaluate
+Trial 382 Completed
+Iteration 227 Completed
+Pending Tasks: 1
+Trial 383 Started
+Starting Evaluate
+Trial 383 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 228 Completed
+Pending Tasks: 1
+Trial 384 Started
+Starting Evaluate
+Trial 384 Completed
+Iteration 229 Completed
+Pending Tasks: 1
+Trial 385 Started
+Starting Evaluate
+Trial 385 Completed
+Pending Tasks: 1
+Trial 386 Started
+Starting Evaluate
+Trial 386 Completed
+Iteration 230 Completed
+Pending Tasks: 2
+Trial 387 Started
+Starting Evaluate
+Trial 387 Completed
+Iteration 231 Completed
+Pending Tasks: 2
+Trial 388 Started
+Starting Evaluate
+Trial 388 Completed
+Iteration 232 Completed
+Pending Tasks: 1
+Trial 389 Started
+Starting Evaluate
+Trial 389 Completed
+Iteration 233 Completed
+Pending Tasks: 1
+Trial 390 Started
+Starting Evaluate
+Trial 390 Completed
+Iteration 234 Completed
+Pending Tasks: 1
+Trial 391 Started
+Starting Evaluate
+Trial 391 Completed
+Iteration 235 Completed
+Trial 392 Completed
+Pending Tasks: 1
+Trial 392 Started
+Starting Evaluate
+Iteration 236 Completed
+Pending Tasks: 1
+Trial 393 Started
+Starting Evaluate
+Trial 393 Completed
+Iteration 237 Completed
+Pending Tasks: 1
+Trial 394 Started
+Starting Evaluate
+Trial 394 Completed
+Iteration 238 Completed
+Pending Tasks: 1
+Trial 395 Started
+Starting Evaluate
+Trial 395 Completed
+Pending Tasks: 1
+Trial 396 Started
+Starting Evaluate
+Trial 396 Completed
+Pending Tasks: 1
+Trial 397 Started
+Starting Evaluate
+Trial 397 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 239 Completed
+Pending Tasks: 1
+Trial 398 Started
+Starting Evaluate
+Trial 398 Completed
+Iteration 240 Completed
+Pending Tasks: 1
+Trial 399 Started
+Starting Evaluate
+Trial 399 Completed
+Pending Tasks: 1
+Trial 400 Started
+Starting Evaluate
+Trial 400 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 241 Completed
+Pending Tasks: 1
+Trial 401 Started
+Starting Evaluate
+Trial 401 Completed
+Iteration 242 Completed
+Pending Tasks: 1
+Trial 402 Started
+Starting Evaluate
+Trial 402 Completed
+Iteration 243 Completed
+Pending Tasks: 1
+Trial 403 Started
+Starting Evaluate
+Trial 403 Completed
+Iteration 244 Completed
+Pending Tasks: 1
+Trial 404 Started
+Starting Evaluate
+Trial 404 Completed
+Pending Tasks: 1
+Trial 405 Started
+Starting Evaluate
+Trial 405 Completed
+Pending Tasks: 1
+Trial 406 Started
+Starting Evaluate
+Trial 406 Completed
+Pending Tasks: 1
+Trial 407 Started
+Starting Evaluate
+Trial 407 Completed
+Pending Tasks: 1
+Trial 408 Started
+Starting Evaluate
+Trial 408 Completed
+Pending Tasks: 1
+Trial 409 Started
+Starting Evaluate
+Trial 409 Completed
+Pending Tasks: 1
+Trial 410 Started
+Starting Evaluate
+Trial 410 Completed
+Iteration 245 Completed
+Pending Tasks: 1
+Trial 411 Started
+Starting Evaluate
+Trial 411 Completed
+Iteration 246 Completed
+Pending Tasks: 1
+Trial 412 Started
+Starting Evaluate
+Trial 412 Completed
+Iteration 247 Completed
+Pending Tasks: 1
+Trial 413 Started
+Starting Evaluate
+Trial 413 Completed
+Iteration 248 Completed
+Pending Tasks: 1
+Trial 414 Started
+Starting Evaluate
+Trial 414 Completed
+Iteration 249 Completed
+Pending Tasks: 1
+Trial 415 Started
+Starting Evaluate
+Trial 415 Completed
+Iteration 250 Completed
+Pending Tasks: 1
+Trial 416 Started
+Starting Evaluate
+Trial 416 Completed
+Iteration 251 Completed
+Pending Tasks: 1
+Trial 417 Started
+Starting Evaluate
+Trial 417 Completed
+Pending Tasks: 1
+Trial 418 Started
+Starting Evaluate
+Trial 418 Completed
+Pending Tasks: 1
+Trial 419 Started
+Starting Evaluate
+Trial 419 Completed
+Iteration 252 Completed
+Pending Tasks: 1
+Trial 420 Started
+Starting Evaluate
+Trial 420 Completed
+Pending Tasks: 1
+Trial 421 Started
+Starting Evaluate
+Trial 421 Completed
+Pending Tasks: 1
+Trial 422 Started
+Starting Evaluate
+Trial 422 Completed
+Pending Tasks: 1
+Trial 423 Started
+Starting Evaluate
+Trial 423 Completed
+Pending Tasks: 1
+Trial 424 Started
+Starting Evaluate
+Trial 424 Completed
+Pending Tasks: 1
+Trial 425 Started
+Starting Evaluate
+Trial 425 Completed
+Iteration 253 Completed
+Pending Tasks: 1
+Trial 426 Started
+Starting Evaluate
+Trial 426 Completed
+Pending Tasks: 1
+Trial 427 Started
+Starting Evaluate
+Trial 427 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 254 Completed
+Pending Tasks: 1
+Trial 428 Started
+Starting Evaluate
+Trial 428 Completed
+Pending Tasks: 1
+Trial 429 Started
+Starting Evaluate
+Trial 429 Completed
+Iteration 255 Completed
+Pending Tasks: 1
+Trial 430 Started
+Starting Evaluate
+Trial 430 Completed
+Pending Tasks: 1
+Trial 431 Started
+Starting Evaluate
+Trial 431 Completed
+Pending Tasks: 1
+Trial 432 Started
+Starting Evaluate
+Trial 432 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 256 Completed
+Pending Tasks: 1
+Trial 433 Started
+Starting Evaluate
+Trial 433 Completed
+Iteration 257 Completed
+Pending Tasks: 1
+Trial 434 Started
+Starting Evaluate
+Trial 434 Completed
+Pending Tasks: 1
+Trial 435 Started
+Starting Evaluate
+Trial 435 Completed
+Iteration 258 Completed
+Pending Tasks: 1
+Trial 436 Started
+Starting Evaluate
+Trial 436 Completed
+Iteration 259 Completed
+Pending Tasks: 1
+Trial 437 Started
+Starting Evaluate
+Trial 437 Completed
+Iteration 260 Completed
+Pending Tasks: 1
+Trial 438 Started
+Starting Evaluate
+Trial 438 Completed
+Iteration 261 Completed
+Pending Tasks: 2
+Trial 439 Started
+Starting Evaluate
+Trial 439 Completed
+Iteration 262 Completed
+Pending Tasks: 1
+Trial 440 Started
+Starting Evaluate
+Trial 440 Completed
+Iteration 263 Completed
+Pending Tasks: 2
+Trial 441 Started
+Starting Evaluate
+Trial 441 Completed
+Iteration 264 Completed
+Pending Tasks: 2
+Trial 442 Started
+Starting Evaluate
+Trial 442 Completed
+Iteration 265 Completed
+Pending Tasks: 2
+Trial 443 Started
+Starting Evaluate
+Trial 443 Completed
+Iteration 266 Completed
+Pending Tasks: 1
+Trial 444 Started
+Starting Evaluate
+Trial 444 Completed
+Pending Tasks: 1
+Trial 445 Started
+Starting Evaluate
+Trial 445 Completed
+Pending Tasks: 1
+Trial 446 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.DEADLINE_EXCEEDED
+	details = "Deadline Exceeded"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:4, grpc_message:"Deadline Exceeded"}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.DEADLINE_EXCEEDED
+	details = "Deadline Exceeded"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_status:4, grpc_message:"Deadline Exceeded"}"
+>
+Trial 446 Completed
+Raw score too low, returning unadjusted values
+Iteration 267 Completed
+Pending Tasks: 2
+Trial 447 Started
+Starting Evaluate
+Trial 447 Completed
+Pending Tasks: 1
+Trial 448 Started
+Starting Evaluate
+Trial 448 Completed
+Pending Tasks: 1
+Trial 449 Started
+Starting Evaluate
+Trial 449 Completed
+Pending Tasks: 1
+Trial 450 Started
+Starting Evaluate
+Trial 450 Completed
+Pending Tasks: 1
+Trial 451 Started
+Starting Evaluate
+Trial 451 Completed
+Pending Tasks: 1
+Trial 452 Started
+Starting Evaluate
+Trial 452 Completed
+Pending Tasks: 1
+Trial 453 Started
+Starting Evaluate
+Trial 453 Completed
+Iteration 268 Completed
+Pending Tasks: 1
+Trial 454 Started
+Starting Evaluate
+Trial 454 Completed
+Iteration 269 Completed
+Pending Tasks: 1
+Trial 455 Started
+Starting Evaluate
+Trial 455 Completed
+Iteration 270 Completed
+Pending Tasks: 1
+Trial 456 Started
+Starting Evaluate
+Trial 456 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 271 Completed
+Pending Tasks: 1
+Trial 457 Started
+Starting Evaluate
+Trial 457 Completed
+Iteration 272 Completed
+Pending Tasks: 1
+Trial 458 Started
+Starting Evaluate
+Trial 458 Completed
+Iteration 273 Completed
+Pending Tasks: 1
+Trial 459 Started
+Starting Evaluate
+Trial 459 Completed
+Pending Tasks: 1
+Trial 460 Started
+Starting Evaluate
+Trial 460 Completed
+Pending Tasks: 1
+Trial 461 Started
+Starting Evaluate
+Trial 461 Completed
+Pending Tasks: 1
+Trial 462 Started
+Starting Evaluate
+Trial 462 Completed
+Pending Tasks: 1
+Trial 463 Started
+Starting Evaluate
+Trial 463 Completed
+Iteration 274 Completed
+Pending Tasks: 1
+Trial 464 Started
+Starting Evaluate
+Trial 464 Completed
+Iteration 275 Completed
+Trial 465 Completed
+Pending Tasks: 1
+Trial 465 Started
+Starting Evaluate
+Iteration 276 Completed
+Pending Tasks: 1
+Trial 466 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 466 Completed
+Raw score too low, returning unadjusted values
+Iteration 277 Completed
+Pending Tasks: 1
+Trial 467 Started
+Starting Evaluate
+Trial 467 Completed
+Iteration 278 Completed
+Pending Tasks: 1
+Trial 468 Started
+Starting Evaluate
+Trial 468 Completed
+Pending Tasks: 1
+Trial 469 Started
+Starting Evaluate
+Trial 469 Completed
+Iteration 279 Completed
+Pending Tasks: 1
+Trial 470 Started
+Starting Evaluate
+Trial 470 Completed
+Pending Tasks: 1
+Trial 471 Started
+Starting Evaluate
+Trial 471 Completed
+Iteration 280 Completed
+Pending Tasks: 1
+Trial 472 Started
+Starting Evaluate
+Trial 472 Completed
+Pending Tasks: 1
+Trial 473 Started
+Starting Evaluate
+Trial 473 Completed
+Iteration 281 Completed
+Pending Tasks: 1
+Trial 474 Started
+Starting Evaluate
+Trial 474 Completed
+Iteration 282 Completed
+Pending Tasks: 2
+Trial 475 Started
+Starting Evaluate
+Trial 475 Completed
+Iteration 283 Completed
+Pending Tasks: 2
+Trial 476 Started
+Starting Evaluate
+Trial 476 Completed
+Iteration 284 Completed
+Pending Tasks: 1
+Trial 477 Started
+Starting Evaluate
+Trial 477 Completed
+Iteration 285 Completed
+Pending Tasks: 2
+Trial 478 Started
+Starting Evaluate
+Traceback (most recent call last):
+  File "/mydata/TUNA/src/client/AdjustedDistributedWorkerManager.py", line 125, in _run_worker
+    response: message_pb2.Performanace = eval_client.evaluate(
+                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/TUNA/src/evaluation_client.py", line 86, in evaluate
+    result = self.stub.EvaluateConfig(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1181, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mydata/miniconda3/envs/mlos/lib/python3.11/site-packages/grpc/_channel.py", line 1006, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+
+Error, marked as failed: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNKNOWN
+	details = "Exception calling application: 'NoneType' object is not subscriptable"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Exception calling application: \'NoneType\' object is not subscriptable", grpc_status:2}"
+>
+Trial 478 Completed
+Raw score too low, returning unadjusted values
+Iteration 286 Completed
+Pending Tasks: 1
+Trial 479 Started
+Starting Evaluate
+Trial 479 Completed
+Iteration 287 Completed
+Pending Tasks: 1
+Trial 480 Started
+Starting Evaluate
+Trial 480 Completed
+Iteration 288 Completed
+Pending Tasks: 2
+Trial 481 Started
+Starting Evaluate
+Trial 481 Completed
+Iteration 289 Completed
+Pending Tasks: 2
+Trial 482 Started
+Starting Evaluate
+Trial 482 Completed
+Iteration 290 Completed
+Pending Tasks: 2
+Trial 483 Started
+Starting Evaluate
+Trial 483 Completed
+Pending Tasks: 1
+Trial 484 Started
+Starting Evaluate
+Trial 484 Completed
+Pending Tasks: 1
+Trial 485 Started
+Starting Evaluate
+Trial 485 Completed
+Pending Tasks: 1
+Trial 486 Started
+Starting Evaluate
+Trial 486 Completed
+Pending Tasks: 1
+Trial 487 Started
+Starting Evaluate
+Trial 487 Completed
+Pending Tasks: 1
+Trial 488 Started
+Starting Evaluate
+Trial 488 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 291 Completed
+Pending Tasks: 2
+Trial 489 Started
+Starting Evaluate
+Trial 489 Completed
+Pending Tasks: 1
+Trial 490 Started
+Starting Evaluate
+Trial 490 Completed
+Pending Tasks: 1
+Trial 491 Started
+Starting Evaluate
+Trial 491 Completed
+Pending Tasks: 1
+Trial 492 Started
+Starting Evaluate
+Trial 492 Completed
+Iteration 292 Completed
+Pending Tasks: 1
+Trial 493 Started
+Starting Evaluate
+Trial 493 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 293 Completed
+Pending Tasks: 1
+Trial 494 Started
+Starting Evaluate
+Trial 494 Completed
+Pending Tasks: 1
+Trial 495 Started
+Starting Evaluate
+Trial 495 Completed
+Pending Tasks: 1
+Trial 496 Started
+Starting Evaluate
+Trial 496 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 294 Completed
+Pending Tasks: 1
+Trial 497 Started
+Starting Evaluate
+Trial 497 Completed
+Pending Tasks: 1
+Trial 498 Started
+Starting Evaluate
+Trial 498 Completed
+Iteration 295 Completed
+Pending Tasks: 1
+Trial 499 Started
+Starting Evaluate
+Trial 499 Completed
+Iteration 296 Completed
+Trial 500 Completed
+Trial 501 Completed
+Variance too high, returning min(default value * 2, min raw score * 2)
+Iteration 297 Completed
+Trial 502 Completed
+Iteration 298 Completed
+Trial 503 Completed
+Iteration 299 Completed
+Trial 504 Completed
+Iteration 300 Completed
+Trial 505 Completed
+Iteration 301 Completed
+Trial 506 Completed
+Iteration 302 Completed
+Trial 507 Completed
+Iteration 303 Completed
+Trial 508 Completed
+Iteration 304 Completed
