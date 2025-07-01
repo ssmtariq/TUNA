@@ -187,7 +187,8 @@ conda activate mlos
 
 ## Usage Examples
 
-To test functionality of TUNA, there is one main script that can be run on the orchestartor node:
+To test functionality of TUNA, create the result directory `mkdir -p /path/to/TUNA/src/results`. 
+There is one main script that can be run on the orchestartor node:
 
 ```sh
 python3 TUNA.py <experiment> <seed> <hosts>
