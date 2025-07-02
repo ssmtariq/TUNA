@@ -216,6 +216,82 @@ Here we provide a brief description of each tuning script. All of the following 
 - `TUNA_no_outlier.py`: The full TUNA sampling methodology without the outlier detection.
 - `TUNA.py`: The normal TUNA sampling script that is used throughout the paper.
 
+## One evaluation in flight
+```
+┌──────────────────────────────────────────  ORCHESTRATOR  ──────────────────────────────────────────┐
+│                                                                                                    │
+│   Ray HEAD daemon  (global scheduler + GCS)   ◄────────┐                                           │
+│   Ray DRIVER process  (created by Worker-Manager)      │  same VM                                  │
+│                                                                                                    │
+│   MLOS / SMAC Optimizer                                                                            │
+│   (decides next <config, budget>)                                                                  │
+│           │                                                                                        │
+│           ▼                                                                                        │
+│   Distributed / Parallel Worker-Manager                                                            │
+│   (global queue, noise filter, multi-fidelity bookkeeping)                                         │
+│           │                                                                                        │
+│           ▼   gRPC (protobuf)  ─── one call per evaluation ────────────────────────────────────────┐
+└────────────────────────────────────────────── ⇣  N E T W O R K ⇣ ──────────────────────────────────┘
+                                               results flow back                                     │
+┌──────────────────────────────────────────── WORKER NODE ───────────────────────────────────────────┐
+│ gRPC  EvaluatorServer  (“proxy”)                                                                   │
+│ – flush page-cache, timeout guard                                                                  │
+│        │                                                                                           │
+│        ▼                                                                                           │
+│ NautilusExecutor  (DB-specific harness)                                                            │
+│ – rewrites postgresql.conf / redis.conf                                                            │
+│ – selects benchmark (BenchBase, YCSB, …)                                                           │
+│ – **spawns a Ray actor** with those args                                                           │
+│        │                                                                                           │
+│        ▼                                                                                           │
+│ 0 … N  Ray actors  (RunDBMSConfiguration)  ◄── scheduled by Ray head                               │
+│        │   each actor owns its own NautilusExecutor                                                │
+│        ▼                                                                                           │
+│ docker run  --name dbms_<uuid> …   (one container **per actor**)                                   │
+│ │────────────────────────────────────────────────────────────────────────────────────────────────│ │
+│ │  DBMS (PostgreSQL / Redis / …) + benchmark driver + metrics collectors                         │ │
+│ │────────────────────────────────────────────────────────────────────────────────────────────────│ │
+│        ▲                                                                                           │
+│        │  raw metrics (throughput, p99, runtime, HW counters …)                                    │
+│  Ray future resolved and returned to EvaluatorServer                                               │
+│        ▲                                                                                           │
+│ EvaluatorServer serialises metrics  ►  gRPC reply                                                  │
+└──────────────────────────────────────────── ⇣  N E T W O R K ⇣ ────────────────────────────────────┘
+                                               results flow back
+┌──────────────────────────────────────────  ORCHESTRATOR  ──────────────────────────────────────────┐
+│ Worker-Manager updates observations  →  passes aggregated score to MLOS/SMAC  →  next suggestion…  │
+└────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+Component Hierarchy “who wraps whom”
+------------------------------------
+MLOS / SMAC  ← outer-most search
+  ↳ Worker-Manager
+      ↳ gRPC EvaluatorClient
+          ↳ gRPC EvaluatorServer  (proxy on worker)
+              ↳ NautilusExecutor  (DB-specific harness)
+                  ↳ Ray Actor  (0…N per worker, scheduled by Ray head)
+                      ↳ Docker container  (1 per actor)
+                          ↳ DBMS process + benchmark
+                              ↳ OS / Hardware  ← inner-most
+```
+
+### Why each layer matters
+
+| Layer         | Adds what you’d re-implement if it disappeared                                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Docker**    | Reproducible environment, quick teardown; without it every run would need manual clean-up of processes, files, ports.                                   |
+| **Nautilus**  | Uniform Python API for *any* DBMS/benchmark pair; without it you’d write (and maintain) different bash scripts for Postgres, Redis, NGINX…              |
+| **Ray**       | Cluster scheduling, retries, resource tracking, dynamic scaling; without it you’d build your own task-queue & heartbeat logic on top of gRPC/SSH.       |
+| **gRPC**      | Efficient, language-agnostic transport; you *could* replace with raw sockets or HTTP, but gRPC gives typed messages, deadlines, and streaming for free. |
+| **MLOS/SMAC** | Proven Bayesian/MF optimizer; replacing it means re-coding acquisition functions, model fitting, SH-style budgeting.                                    |
+
+So **Docker isolates each experiment**, **Nautilus knows how to execute one experiment**, **Ray spreads thousands of those experiments across a cluster**, and **MLOS/SMAC decides which experiment to run next**.
+- **Ray control-plane** – the orchestrator hosts both the *Ray head daemon* (scheduler + Global Control Store) *and* the *Ray driver* process that submits tasks.
+- **Concurrency** – each worker can run **0…N Ray actors and containers** simultaneously, not just one.
+- **Per-actor isolation** – Every Ray actor owns its own NautilusExecutor and spins up its own `dbms_<uuid>` container, enabling fully parallel exploration.
+
+
 ### Scripts used for Reproducing Selected Experiments
 
 <table>
