@@ -224,14 +224,15 @@ First, like before we will set up the environment using a deployment script. Thi
 Next, connect to your orchestrator node and run the following commands. Note, that the first command is `tmux`. We recommend using this as tuning runs are long running. Without `tmux` disconnects are common over `ssh`, however this is not technically required.
 
 ```sh
-tmux
-tmux a -t proxy #open the tmux terminal "proxy" running in each worker nodes
+tmux a -t proxy #open and attach the tmux terminal "proxy" running in each worker nodes to the terminal
+# To detach tmux terminal; Press Ctrl+B then D
 tmux ls #list tmux terminal sessions
 tmux set -g mouse on #enable mouse scrolling in tmux session
 tmux kill-session -t <session_name> #terminate a specific session
 ```
 In the orchestrator or the 11th node (e.g. node-10), run the command to create the mlos Conda environment mentioned earlier.
 ```sh
+cd ~/TUNA
 make -C src/MLOS # (only the conda-env target is required)
 conda activate mlos
 ```
