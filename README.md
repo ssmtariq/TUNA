@@ -13,7 +13,7 @@ This code can be used to run the main experimental results from our paper. Users
 
 ## Fetching Code
 
-To pull the code, we use submodules for library dependencies. These commands should pull all the necessary code.
+To pull the code, we use submodules for library dependencies. These commands should pull all the necessary code. Clone it one the node-10 (the 11th node) in a 11 node cloudlab xl170 cluster.
 
 ```sh
 git clone git@github.com:uw-mad-dash/TUNA.git
@@ -21,7 +21,7 @@ git submodule update --init --recursive
 ```
 OR
 ```sh
-git clone https://github.com/uw-mad-dash/TUNA.git
+git clone -b development https://github.com/ssmtariq/TUNA.git
 cd TUNA
 git config submodule.src/MLOS.url https://github.com/jsfreischuetz/MLOS.git
 git submodule update --init --recursive
@@ -92,17 +92,23 @@ If you are trying to replicate the work found in our paper, we recommend using 1
 
 To verify SSH-based orchestration before running deployment scripts:
 
-1. **Generate a key on one worker (e.g., node0)**:
+1. **Generate a key on one worker (e.g., node10)**:
 
    ```sh
    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
    ```
-2. **Copy the public key to all nodes (including orchestrator):**
+2. **Add the public key to CloudLab:**
 
    ```sh
-   ssh-copy-id -i ~/.ssh/id_ed25519.pub <user>@<hostname>
+   cat ~/.ssh/id_ed25519.pub
    ```
-3. **Create a clean host file (no usernames):**
+
+   * Copy the public key
+   * Go to **CloudLab Dashboard → Manage SSH Keys → Add Key**.
+   * Paste the public key into the **Key** box and click **Add Key**.
+   * Wait **1–2 minutes** or click **Update Keystore** if available.
+     *(CloudLab will automatically propagate the new key to all nodes of active and future experiments.)*
+3. **Create a clean host file (no usernames; e.g. `hosts_clean`):**
    Example:
 
    ```
@@ -115,6 +121,8 @@ To verify SSH-based orchestration before running deployment scripts:
    ```sh
    cd src/processing #consider current dir is /users/username/TUNA
    ./add_hosts.sh <hosts> 22
+   # example
+   sh add_hosts.sh ../hosts_clean 22
    ```
 5. **Set environment variables on orchestrator node (e.g., in `~/.bashrc`)**:
 
@@ -123,10 +131,14 @@ To verify SSH-based orchestration before running deployment scripts:
    export PSSH_OPTIONS="IdentityFile=$HOME/.ssh/id_ed25519"
    source ~/.bashrc
    ```
-6. **Verify with a test command:**
+6. **Verify with a test `parallel-ssh` command:**
 
-   ```sh
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y pssh
    parallel-ssh -i -h <hosts> hostname
+   #example
+   parallel-ssh -i -h ../hosts_clean hostname
    ```
 
 ### Workers
@@ -134,21 +146,60 @@ To verify SSH-based orchestration before running deployment scripts:
 To install and copy our files, there are two commands we will need to run.
 
 ```sh
-./worker_setup_remote.sh <hosts>
+sh worker_setup_remote.sh <hosts>
 #example (provide absolute path of hosts file)
-./worker_setup_remote.sh /users/username/TUNA/src/hosts_clean
+bash worker_setup_remote_v2.sh /users/username/TUNA/src/hosts_clean
 ```
 
 The first command will install all of the dependencies, as well as set up the environment.
 
 ```sh
-./worker_deployment.sh <hosts> <node_type>
+bash worker_deployment.sh <hosts> <node_type>
 #example (provide absolute path of hosts file)
-./worker_deployment.sh /users/username/TUNA/src/hosts_clean c220g5
+bash worker_deployment.sh /users/username/TUNA/src/hosts_clean c220g5
 #For cloud lab cluster (use appropriate machine or node types. available instance types are c220g1, c220g2, c220g5, and xl170)
-./worker_deployment_cloudlab.sh /users/username/TUNA/src/hosts_clean xl170
+bash worker_deployment_cloudlab_v2.sh /users/username/TUNA/src/hosts_clean xl170
+```
+The script `worker_deployment_cloudlab*.sh` will wait for **5 minutes** for the docker and ray to be ready. Will print traces as below:
+```bash
+[11] 05:04:35 [SUCCESS] hp186.utah.cloudlab.us
++ read -p 'Press enter to continue once docker image has been built'
+Press enter to continue once docker image has been built
++ RAY_PORT=50050
++ WAIT_SECS=300
++ SLEEP_SECS=2
++ parallel-ssh -i -t 0 -h /users/ssmtariq/TUNA/src/hosts_clean 'bash -lc '\''
+  deadline=$(($(date +%s) + 300))
+  echo "[INFO] $(hostname): waiting for Ray Client port :50050 to listen..."
+  while [ $(date +%s) -lt $deadline ]; do
+    # Bash /dev/tcp attempts a TCP connect; success means port is listening.
+    if bash -c "echo > /dev/tcp/127.0.0.1/50050" >/dev/null 2>&1; then
+      echo "[OK]   $(hostname): Ray listening on :50050"
+      exit 0
+    fi
+    sleep 2
+  done
+  echo "[ERROR] $(hostname): timed out waiting for :50050"
+  exit 1
+'\'''
+[1] 05:07:14 [SUCCESS] hp171.utah.cloudlab.us
+[INFO] node5.tuna2.cloudprof-pg0.utah.cloudlab.us: waiting for Ray Client port :50050 to listen...
+[OK]   node5.tuna2.cloudprof-pg0.utah.cloudlab.us: Ray listening on :50050
 ```
 Once the `worker_deployment.sh` or `worker_deployment_cloudlab.sh` execution is finished, check the logs `/tmp/install_session.log`, `/tmp/proxy_session.log` and the tmux `proxy` terminal session to confirm if the deployment was successful and workers are running evaluation server listening to port `50051`.
+
+Running `cat /tmp/proxy_session.log` will show traces like below-
+```bash
+Working directory /datadrive
+2025-08-22 05:07:51,084 INFO packaging.py:530 -- Creating a file package for local directory '.'.
+2025-08-22 05:07:51,135 INFO packaging.py:358 -- Pushing file package 'gcs://_ray_pkg_cc6a49eea0ba7f94.zip' (4.36MiB) to Ray cluster...
+2025-08-22 05:07:51,206 INFO packaging.py:371 -- Successfully pushed file package 'gcs://_ray_pkg_cc6a49eea0ba7f94.zip'.
+SIGTERM handler is not set because current thread is not the main thread.
+Server started, listening on 50051
+_pkg_cc6a49eea0ba7f94.zip'.
+SIGTERM handler is not set because current thread is not the main thread.
+Server started, listening on 50051
+```
 
 The second command will start all of the required processes. Note that the second command will say some of the commands fail. This is expected, as they simply ensure that any previous instances of stopped and deleted before beginning the initialization process.
 

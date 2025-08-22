@@ -30,7 +30,7 @@ parallel-ssh -h $1 "sudo mkdir -p /opt/output"
 # -----------------------------------------------------------------------
 # Install the docker images  (tmux session "install")
 # -----------------------------------------------------------------------
-parallel-ssh -h $1 "sudo tmux kill-session -t install"
+parallel-ssh -h $1 "sudo tmux kill-session -t install 2>/dev/null && tmux kill-session -t install || true"
 parallel-ssh -h $1 "sudo tmux new-session -d -s install \"export PATH=\\\$PATH:~/miniconda3/bin ; . ~/miniconda3/etc/profile.d/conda.sh ; conda activate p311 ; cd /opt/nautilus && python3 -u deploy.py start head deploy=cloudlab +deploy/instance_type=$2 2>&1 | tee /tmp/install_session.log\" ; sudo tmux set-option remain-on-exit on"
 parallel-ssh -h $1 "sudo tmux pipe-pane  -t install -o 'cat >> /tmp/install_session.log'"
 
