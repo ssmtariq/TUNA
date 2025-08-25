@@ -233,7 +233,8 @@ tmux kill-session -t <session_name> #terminate a specific session
 In the orchestrator or the 11th node (e.g. node-10), run the command to create the mlos Conda environment mentioned earlier.
 ```sh
 cd ~/TUNA
-make -C src/MLOS # (only the conda-env target is required)
+make -C src/MLOS clean-conda-env
+make -C src/MLOS conda-env # (only the conda-env target is required)
 conda activate mlos
 ```
 
@@ -249,10 +250,19 @@ python3 TUNA.py <experiment> <seed> <hosts>
 An example of this with the parameters filled out the way we used it in the paper is as follows:
 
 ```sh
+cd ~/TUNA/src
 python3 TUNA.py spaces/experiment/pg16.1-tpcc-8c32m.json 1 hosts.cloudlab
 ```
 
 Running this command will run a tuning run for around 8 hours. The results will be output into the results folder in .csv and .pickle file formats. These can then be rerun using `mass_reruns_v2.py`, however this is not required to get tuning results.
+
+## Trouble shooting
+```bash
+# If it says some dependencies for example grpc not found then run
+conda install -n mlos -c conda-forge grpcio protobuf
+# Quick sanity check:
+python -c "import grpc,sys; print('grpc:', grpc.__version__, '\npython:', sys.executable)"
+```
 
 ## Description of tuning scripts
 
