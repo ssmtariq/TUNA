@@ -1,0 +1,11 @@
+{
+    "shortname": "redis-7.2-ycsb-xl170",
+    "description": "redis 7.2, YCSB, xl170",
+    "benchmark": "../benchmark/ycsb.json",
+    "dbms": "../dbms/redis-7.2.json",
+    "knobs": "../knobs/redis-7.2.json",
+    "params": "../params/xl170.json",
+    "target": "throughput",
+    "worst_score": 0,
+    "timeout": 2400
+}
