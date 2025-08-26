@@ -1,0 +1,11 @@
+{
+    "shortname": "mysql8.3-tpcc-xl170",
+    "description": "mysql 8.3, TPC-C, xl170",
+    "benchmark": "../benchmark/tpcc.json",
+    "dbms": "../dbms/mysql-8.3.json",
+    "knobs": "../knobs/mysql-8.3.json",
+    "params": "../params/xl170.json",
+    "target": "goodput",
+    "worst_score": 0,
+    "timeout": 2400
+}
